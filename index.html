@@ -3,38 +3,58 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jon Kirkpatrick | Applied AI & Systems Engineer</title>
+    <title>Jon Kirkpatrick | Systems & Applied AI Engineer</title>
     <style>
-        body { font-family: sans-serif; line-height: 1.6; max-width: 800px; margin: 40px auto; padding: 0 20px; color: #333; }
-        header { border-bottom: 2px solid #cc5d22; padding-bottom: 20px; margin-bottom: 40px; }
-        h1 { color: #1b1c1f; margin-bottom: 5px; }
-        .tagline { color: #cc5d22; font-weight: bold; font-size: 1.2rem; }
-        .project-card { border: 1px solid #ddd; padding: 20px; border-radius: 8px; margin-bottom: 20px; }
-        .tech-stack { font-family: monospace; background: #f4f4f4; padding: 5px; font-size: 0.9rem; }
+        :root { --brand: #cc5d22; --ink: #1b1c1f; --bg: #fffaf3; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 40px auto; padding: 0 20px; color: var(--ink); background-color: var(--bg); }
+        header { border-bottom: 3px solid var(--brand); padding-bottom: 20px; margin-bottom: 40px; }
+        .tagline { color: var(--brand); font-weight: bold; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
+        .project-card { background: white; border: 1px solid #ddd; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+        .tech-tag { display: inline-block; background: #eee; padding: 2px 10px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; margin-right: 5px; margin-top: 5px; }
+        h3 { margin-top: 0; color: var(--brand); }
+        .links { margin-top: 15px; display: flex; gap: 20px; }
+        .links a { font-weight: bold; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--brand); }
     </style>
 </head>
 <body>
     <header>
         <h1>Jon Kirkpatrick</h1>
-        <div class="tagline">Applied AI Engineer & Systems Architect</div>
-        <p>St. John's, NL | Specializing in Distributed Systems, RL Agent Frameworks, and HDL Co-Design.</p>
+        <div class="tagline">Systems Architect & Applied AI Engineer</div>
+        <p>Based in St. John's, NL. Specializing in hardware/software co-design, distributed agent runtimes, and low-latency signal processing.</p>
     </header>
 
     <section id="projects">
-        <h2>Featured Projects</h2>
+        <h2>Strategic Projects</h2>
         
         <div class="project-card">
-            <h3>Build-a-Bot Stadium (BBS)</h3>
-            <p>A distributed simulation runtime for autonomous agents. Features a custom Go-based TCP protocol and plugin-driven game logic.</p>
-            <p class="tech-stack">Go, TCP/IP Sockets, SQLite, React/Web</p>
-            <a href="https://github.com/JonKirkpatrick/bbs">View Repository</a>
+            <h3>1. Build-a-Bot Stadium (BBS)</h3>
+            <p><strong>The Problem:</strong> Managing autonomous RL agents across distributed environments requires a stable, language-agnostic orchestration layer.</p>
+            <p><strong>The Approach:</strong> Built a Go-based distributed runtime using a custom JSONL-over-TCP protocol. Implemented a plugin system allowing hot-swappable bot logic and a real-time telemetry dashboard using Server-Sent Events (SSE).</p>
+            <div>
+                <span class="tech-tag">Go (Golang)</span>
+                <span class="tech-tag">TCP/IP Sockets</span>
+                <span class="tech-tag">Distributed Systems</span>
+                <span class="tech-tag">SQLite</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/JonKirkpatrick/bbs">GitHub Repository</a>
+                <a href="https://github.com/JonKirkpatrick/bbs/blob/main/docs/architecture/ARCHITECTURE.md">Architecture Spec</a>
+            </div>
         </div>
 
         <div class="project-card">
-            <h3>Tactile Pattern Classification</h3>
-            <p>High-performance signal processing and classification of tactile sensor data, featuring hardware acceleration via Verilog/HDL.</p>
-            <p class="tech-stack">Verilog, Python, Signal Processing, FPGA</p>
-            <a href="https://github.com/JonKirkpatrick/tactile-classification">View Repository</a>
+            <h3>2. Tactile Pattern Classification</h3>
+            <p><strong>The Problem:</strong> Real-time interpretation of complex tactile sensor data requires low-latency processing that exceeds the capabilities of standard software stacks.</p>
+            <p><strong>The Approach:</strong> Developed a hardware-accelerated classification pipeline. Leveraged Verilog/HDL for gate-level signal processing paired with Python-based models for verification and pattern analysis.</p>
+            <div>
+                <span class="tech-tag">Verilog/HDL</span>
+                <span class="tech-tag">FPGA Co-Design</span>
+                <span class="tech-tag">Python (NumPy/SciPy)</span>
+                <span class="tech-tag">Signal Processing</span>
+            </div>
+            <div class="links">
+                <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
+            </div>
         </div>
     </section>
 </body>
