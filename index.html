@@ -1,62 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jon Kirkpatrick | Systems & Applied AI Engineer</title>
-    <style>
-        :root { --brand: #cc5d22; --ink: #1b1c1f; --bg: #fffaf3; }
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; max-width: 900px; margin: 40px auto; padding: 0 20px; color: var(--ink); background-color: var(--bg); }
-        header { border-bottom: 3px solid var(--brand); padding-bottom: 20px; margin-bottom: 40px; }
-        .tagline { color: var(--brand); font-weight: bold; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-        .project-card { background: white; border: 1px solid #ddd; padding: 25px; border-radius: 8px; margin-bottom: 30px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
-        .tech-tag { display: inline-block; background: #eee; padding: 2px 10px; border-radius: 4px; font-family: monospace; font-size: 0.85rem; margin-right: 5px; margin-top: 5px; }
-        h3 { margin-top: 0; color: var(--brand); }
-        .links { margin-top: 15px; display: flex; gap: 20px; }
-        .links a { font-weight: bold; color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--brand); }
-    </style>
-</head>
-<body>
-    <header>
-        <h1>Jon Kirkpatrick</h1>
-        <div class="tagline">Aspiring Systems Architect & Applied AI Engineer</div>
-        <p>Based in St. John's, NL. Specializing in TBD, but interested in all thing ML/AI</p>
-    </header>
 
-    <section id="projects">
-        <h2>A Sample of My Work</h2>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Jon Kirkpatrick | Your next Junior Applied AI Engineer?</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <script src="gallery.js"></script>
+    <script>
+        const allProjectData = {
+            "bbs": {
+                "client": [
+                    {
+                        "src": "assets/BBS_Client_View1.png",
+                        "desc": "Right now the client is pretty bare bones.  I'm more interested in the raw data right now, but the plan is to make that centre panel more graphically rich, giving the server view a more intuitive feel.  The side panels are already leaning more in that direction."
+                    },
+                    {
+                        "src": "assets/BBS_Client_View2.png",
+                        "desc": "With a deployed bot, the server view starts to be more useful.  Allowing the user to create new 'Arena' instances and to actually 'Join' the areanas with their deployed bot session."
+                    },
+                    {
+                        "src": "assets/BBS_Client_View3.png",
+                        "desc": "This is just a view of the client with the side panels collapsed.  Once I pipe the viewer in from the server, this will be the typical layout for a user observing a live environment or a replay."
+                    }
+                ],
+                "server": [
+                    {
+                        "src": "assets/BBS_Server_View1.png",
+                        "desc": "At present this is pretty utilitarian, but I've got all the relevant data being displayed.  Once the server side functionality ossifies a bit more and I have some of the design language better defined, I plan to iterate on the design and make it a bit more visually engaging."
+                    },
+                    {
+                        "src": "assets/BBS_Server_View2.png",
+                        "desc": "In this shot, we see a live session engaging with an actual environment.  In the arena card, we display a bit of summary information about the active environment."
+                    },
+                    {
+                        "src": "assets/BBS_Server_View3.png",
+                        "desc": "This is a super rough and ready plugin I threw together for testing, but the critical point is that this is actually served by the plugin itself as a JavaScript bundle.  The upshot is that the plugin authors have complete control over what their environment looks like.  I'm no artist, but in the right hands this could lead to some pretty slick results."
+                    }
+                ],
+                "concept": [
+                    {
+                        "src": "assets/BBS_Logo_Concept.png",
+                        "desc": "Since most of the source for this project is in Go, C# and JavaScript, a palette suggested itself.  The rest is just an expression of its modular design."
+                    },
+                    {
+                        "src": "assets/Logo_Board.png",
+                        "desc": "I converted the sketch to a set of SVGs in Inkscape to explore some variations on the theme."
+                    },
+                    {
+                        "src": "assets/BBS_Logo_Final.png",
+                        "desc": "Once I had a couple of variations I liked, I recreated them in Blender to add some depth and polish.  This one's the cubes idea ... obviously."
+                    },
+                    {
+                        "src": "assets/BBS_Pin_Final.png",
+                        "desc": "Focusing more on the hexagonal aspect of the isometric projection, I created this variation.  It is intended to read as a lapel pin or cuff link."
+                    },
+                    {
+                        "src": "assets/MontyCarlos.png",
+                        "desc": "I don't know if you saw this too, but something about the lapel pin just screamed luchador mask to me.  So I unleashed Genesis on it and this is the result.  I call him Monty Carlitos Guerrero Castillo.  ¡Sagrado corazón de Marío!"
+                    }
+                ]
+            },
+            "tactile": {
+                "Hardware": [
+                    {
+                        "src": "assets/Vector_Core.png",
+                        "desc": "Vector Core"
+                    }
+                ],
+                "Results": [
+                    {
+                        "src": "assets/confusion_matrix.png",
+                        "desc": "Confusion Matrix"
+                    }
+                ]
+            }
+        };
+
+        function launchGallery(projectId, startTab) {
+            if (allProjectData[projectId]) {
+                openGallery(allProjectData[projectId], startTab);
+            }
+        }
+    </script>
+
+    <body>
+        <header>
+            <h1>Jon Kirkpatrick</h1>
+            <div class="tagline">Aspiring Systems Architect & Applied AI Engineer</div>
+            <p>Based in St. John's, NL. Specializing in TBD, but interested in all thing ML/AI</p>
+        </header>
+
+        <section id="projects">
+            <h2>A Sample of My Work</h2>
+            
+            <div class="project-card">
+                <h3>1. Build-a-Bot Stadium (BBS)</h3>
+                <img src="assets/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
+                <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI/ML experiments without being tied
+                    to any particular platform, stack, learning paradigm, or environment type, while being able to keep a persistent record of my iterations.
+                    </p>
+                <p><strong>The Approach:</strong> This was/is an ambitious project, so I tackled it in stages.
+                    <ul>
+                        <li>Considered what I actually needed from the platform and how I wanted to interact with it.</li>
+                        <li>Worked with CoPilot to flesh out engineering documentation, and create a plan of attack.</li>
+                        <li>Finally began to implement the solution:
+                            <ul>
+                                <li>Implemented a Go-based server backend to host environments and manage bot instances.</li>
+                                <li>Created a plugin system to allow for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
+                                <li>Designed a custom JSONL-over-TCP protocol for communication between the client and server, allowing for real-time updates and commands.</li>
+                                <li>Created a Go based agent process to simplify communication between the client and server, to make future bot development easier.</li>
+                                <li>Iterated over a few SQLite schemas to store and manage the state of the environments and bot instances.</li>
+                                <li>Developed a front end client interface using C# with Avalonia to have a light and easy interface to control and monitor the action.</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </p>
+                <p><strong>The Current State:</strong> This is early in development, but eerily functional.  As of March 29, 2026, the project is three weeks old, but already showing promise.</p>
+                    <ul>  
+                        <li>The server is happily hosting a simple RL grid world along with an even simpler guess-the-number game and allowing multiple remote bot 
+                            instances to connect and interact with them.</li>  
+                        <li>The client can connect to multiple servers, send commands, and receive real-time updates on the state of the world and the bots.</li>  
+                        <li>The client can host an arbitrary number of bot instances locally and maintain a persistent record of their identities across multiple servers.</li>
+                        <li>The plugin system is in place, allowing for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
+                        <li>There is a stubbed global registration system in place with a UUID-based approach for both clients and servers.</li>
+                        <li>I've taken some time to develop a bit of brand identity for the product.</li>
+                        <li>Lots more as well, but let's just look at some pictures ... 
+                            <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">
+                                BBS Gallery
+                            </a>
+                        </li>
+                    </ul>
+                <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
+                there's room for a lot of growth.  If I weren't so wrapped up in developing the platform itself, I could already be writing better plugins, deploying non-trivial bot instances on it and getting valuable data in return.
+                For ~three weeks of work, it's actually already almost useful.
+                </p>
+                <div>
+                    <span class="tech-tag">Go (Golang)</span>
+                    <span class="tech-tag">C# (with Avalonia)</span>  
+                    <span class="tech-tag">JavaScript</span>
+                    <span class="tech-tag">SQLite</span>
+                    <span class="tech-tag">TCP/IP Sockets</span>
+                    <span class="tech-tag">Distributed Systems</span>
+                    <span class="tech-tag">Concurrency</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/JonKirkpatrick/bbs">GitHub Repository</a>
+                    <a href="https://github.com/JonKirkpatrick/bbs/blob/main/docs/architecture/ARCHITECTURE.md">Architecture Spec</a>
+                </div>
+            </div>
+
+            <div class="project-card">
+                <h3>2. Tactile Pattern Classification</h3>
+                <p><strong>The Problem:</strong> A robotic finger equipped with only an IMU sensor array needed to classify tactile patterns in real-time. 
+                    Real world data is messy, and it's not always practical to offload processing to cloud infrastructure; hardware's not cheap either.</p>
+                <p><strong>The Approach:</strong> Developed a tremendously flexible hardware implementation of a whole class of convolutional neural networks. 
+                    Leveraged SystemVerilog to create a custom ISA and microkernel to allow for flexible neural architectures to operate on extremely lightweight 
+                    hardware within certain, strict constraints.</p>
+                    <p><strong>The Current State:</strong> The project is presently stalled, pending renewed interest and greater technical acumen to overcome a few of the remaining challenges, but here's the as-built.</p>
+                    <ul>
+                        <li>Created a custom instruction set architecture (ISA) and microkernel in SystemVerilog to allow for flexible neural network architectures to be implemented on FPGA hardware, without need of a traditional CPU or even a floating point unit.</li>
+                        <li>Developed a genetic algorithm for optimizing the neural network architecture and parameters, using partial training and a light weight Monte Carlo tree search to guide the optimization process.</li>
+                        <li>Implemented a Python-based training pipeline using NumPy, SciPy, and Pandas to preprocess the tactile data and train the neural network.</li>
+                        <li>Created a custom quantization aware training loop to make the jump from float32 to int8 representation less deleterious.</li>
+                    </ul>
+                    <p><strong>Highlights:</strong> Since the project isn't actually on actual hardware, it seems more useful to share some of the successes thus far.  I don't want to undersell 
+                        what I've accomplished, because it's pretty awesome.</p>
+                    <div class="highlight-grid">
+                        <div class="sub-card">
+                            <h4>From Ambiguity to Architecture</h4>
+                            <p>I started with a <strong>minimalist project brief</strong>—essentially a handwritten diagram and a few keywords. I translated these incomplete specifications into a full hardware/software co-design stack, including a custom training pipeline, and FPGA-based inference.</p>
+                            <div class="links">
+                                <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
+                            </div>
+                            <p>
+                                There are three aspects of the hardware design I'm particularly proud of and I'd encourage you to check out the GitHub repository linked below for more details on each of them.
+                                I've only included the dot product module diagram here, but the higher level orchestration layer and the instruction set architecture are also worth a look.  They're called
+                                "conv_core.sv" and "instruction_handler.sv" respectively.  The source code related to the following section is called "int8_vector_core.sv" in the repository.
+                            </p>
+                        </div>
+                        <div class="sub-card">
+                            <h4>Pipelined Adder Tree</h4>
+                            <p>
+                                This is perhaps the aspect of the hardware design I'm most proud of, or at least it's the most easily demonstrable.  It's a module, capable of handling multiple small operations in parallel, 
+                                when larger operations aren't needed, and it performs these small operations more quickly.
+                                An FPGA is a very different animal than a CPU or GPU.  It's not a collection of cores, but rather a sea of logic blocks and memory, which can be configured to operate 
+                                in whatever way you see fit.  This means that, with the right design, you can achieve a level of parallelization that would be unimaginable on a traditional architecture.  
+                                I'm going to leave the diagram to speak for itself, but suffice it to say that this design warrants a follow up question or two if you're so inclined.
+                            </p>
+                            <img width="100%" src="docs/Vector_Core.png" alt="Adder Tree Architecture" class="artifact-img">
+                            <p>
+                                Humorously/unfortunately, my memory management strategy negated nearly all of the benefits of parallelization.  That's one of the left-to-do items for future optimization.
+                                Once that problem is solved, the adder will be able to operate at full capacity, spitting out results every other clock cycle.
+                            </p>
+                        </div>
+
+                        <div class="sub-card">
+                            <h4>Int8 Inference Fidelity</h4>
+                            <p>Proved that a minimal CNN could maintain 90%+ classification accuracy even when restricted to a tiny integer domain. </p>
+                        </div>
+
+                        <div class="sub-card">
+                            <h4>"Headless" Microkernel</h4>
+                            <p>The SystemVerilog core is instruction-driven. This allows the model architecture and weights to be updated at runtime via a simple serial interface, effectively creating a "CNN operating system."</p>
+                        </div>
+                    </div>
+                <div>
+                    <span class="tech-tag">SystemVerilog</span>
+                    <span class="tech-tag">FPGA Co-Design</span>
+                    <span class="tech-tag">Python (NumPy/SciPy/Pandas)</span>
+                </div>
+                <div class="links">
+                    <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
+                </div>
+            </div>
+        </section>
         
-        <div class="project-card">
-            <h3>1. Build-a-Bot Stadium (BBS)</h3>
-            <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI and ML experiments without being tied to any particular platform or stack, and to be able to keep a persistent record of my iterations.</p>
-            <p><strong>The Approach:</strong> Built a Go-based distributed runtime using a custom JSONL-over-TCP protocol. Implemented a plugin system allowing language agnostic hot-swappable environments, remote bot instances and a real-time telemetry dashboard using Server-Sent Events (SSE).  Developed a front end client interface using C# with Avalonia to have a light and easy entry point to control and monitor the action.</p>
-            <div>
-                <span class="tech-tag">Go (Golang)</span>
-                <span class="tech-tag">C# (with Avalonia)</span>  
-                <span class="tech-tag">TCP/IP Sockets</span>
-                <span class="tech-tag">Distributed Systems</span>
-                <span class="tech-tag">SQLite</span>
-            </div>
-            <div class="links">
-                <a href="https://github.com/JonKirkpatrick/bbs">GitHub Repository</a>
-                <a href="https://github.com/JonKirkpatrick/bbs/blob/main/docs/architecture/ARCHITECTURE.md">Architecture Spec</a>
-            </div>
-        </div>
-
-        <div class="project-card">
-            <h3>2. Tactile Pattern Classification</h3>
-            <p><strong>The Problem:</strong> Real-time interpretation of complex tactile sensor data requires low-latency processing that exceeds the capabilities of standard software stacks.</p>
-            <p><strong>The Approach:</strong> Developed a hardware-accelerated classification pipeline. Leveraged Verilog/HDL for gate-level signal processing paired with Python-based models for verification and pattern analysis.</p>
-            <div>
-                <span class="tech-tag">Verilog/HDL</span>
-                <span class="tech-tag">FPGA Co-Design</span>
-                <span class="tech-tag">Python (NumPy/SciPy/Pandas)</span>
-                <span class="tech-tag">Signal Processing</span>
-            </div>
-            <div class="links">
-                <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
+        <div id="galleryOverlay" class="modal">
+            <span class="close-btn" onclick="closeGallery()">&times;</span>
+            <div class="modal-content">
+                <div class="tab-bar"></div>
+                <div class="gallery-controls">
+                    <button onclick="changeImage(-1)">&#10094; Prev</button>
+                    <span id="imageCounter"></span>
+                    <button onclick="changeImage(1)">Next &#10095;</button>
+                </div>
+                
+                <p id="imageCaption"></p>
+                
+                <img id="mainGalleryImage" src="" alt="Gallery View">
             </div>
         </div>
-    </section>
-</body>
+    </body>
 </html>
