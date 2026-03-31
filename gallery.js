@@ -2,39 +2,33 @@ let currentGalleryData = {};
 let currentTab = '';
 let currentIndex = 0;
 
-// This is the "Entry Point" called by index.html
 function openGallery(projectData, defaultTab) {
     currentGalleryData = projectData;
-    // Set the tab: use default if provided, otherwise grab the first key in the object
     currentTab = projectData[defaultTab] ? defaultTab : Object.keys(projectData)[0];
     currentIndex = 0;
     
     document.getElementById("galleryOverlay").style.display = "block";
-    renderTabs(); // Build the buttons
-    updateGallery(); // Show the first image
+    renderTabs();
+    updateGallery();
 }
 
-// This is the function that handles clicking a tab
 function filterGallery(tabKey) {
     currentTab = tabKey;
-    currentIndex = 0; // Reset to first image of the new category
-    renderTabs();     // Redraw tabs to update the "active" CSS class
-    updateGallery();  // Show the new image
+    currentIndex = 0;
+    renderTabs();
+    updateGallery();
 }
 
 function renderTabs() {
     const tabBar = document.querySelector('.tab-bar');
-    tabBar.innerHTML = ''; // Clear existing buttons
+    tabBar.innerHTML = '';
     
     Object.keys(currentGalleryData).forEach(tabKey => {
         const btn = document.createElement('button');
-        // If this is the active tab, give it the 'active' class for styling
         btn.className = `tab-link ${tabKey === currentTab ? 'active' : ''}`;
         
-        // Make the button text look nice (e.g., "server" -> "Server")
         btn.innerText = tabKey.charAt(0).toUpperCase() + tabKey.slice(1);
         
-        // Connect the click to our filter function
         btn.onclick = () => filterGallery(tabKey);
         
         tabBar.appendChild(btn);
@@ -43,19 +37,25 @@ function renderTabs() {
 
 function updateGallery() {
     const imgElement = document.getElementById("mainGalleryImage");
-    const captionElement = document.getElementById("imageCaption"); // Ensure this ID exists in HTML
+    const pdfElement = document.getElementById("pdfViewer");
+    const captionElement = document.getElementById("imageCaption");
     const images = currentGalleryData[currentTab];
     
     if (images && images.length > 0) {
         const currentData = images[currentIndex];
+        const isPDF = currentData.src.toLowerCase().endsWith('.pdf');
         
-        // Update the Image
-        imgElement.src = currentData.src;
-        
-        // Update the Caption
+        if (isPDF) {
+            pdfElement.src = currentData.src;
+            pdfElement.style.display = "block";
+            imgElement.style.display = "none";
+        } else {
+            imgElement.src = currentData.src;
+            imgElement.style.display = "block";
+            pdfElement.style.display = "none";
+        }        
         captionElement.innerText = currentData.desc || ""; 
         
-        // Update the Counter
         document.getElementById("imageCounter").innerText = 
             `${currentTab.toUpperCase()}: ${currentIndex + 1} / ${images.length}`;
     }

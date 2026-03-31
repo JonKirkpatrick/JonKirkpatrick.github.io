@@ -4,75 +4,111 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Jon Kirkpatrick | Your next Junior Applied AI Engineer?</title>
+        <title>Jon Kirkpatrick</title>
         <link rel="stylesheet" href="style.css">
     </head>
+
     <script src="gallery.js"></script>
+
     <script>
         const allProjectData = {
             "bbs": {
                 "client": [
                     {
-                        "src": "assets/BBS_Client_View1.png",
+                        "src": "assets/BBS/BBS_Client_View1.png",
                         "desc": "Right now the client is pretty bare bones.  I'm more interested in the raw data right now, but the plan is to make that centre panel more graphically rich, giving the server view a more intuitive feel.  The side panels are already leaning more in that direction."
                     },
                     {
-                        "src": "assets/BBS_Client_View2.png",
+                        "src": "assets/BBS/BBS_Client_View2.png",
                         "desc": "With a deployed bot, the server view starts to be more useful.  Allowing the user to create new 'Arena' instances and to actually 'Join' the areanas with their deployed bot session."
                     },
                     {
-                        "src": "assets/BBS_Client_View3.png",
+                        "src": "assets/BBS/BBS_Client_View3.png",
                         "desc": "This is just a view of the client with the side panels collapsed.  Once I pipe the viewer in from the server, this will be the typical layout for a user observing a live environment or a replay."
                     }
                 ],
                 "server": [
                     {
-                        "src": "assets/BBS_Server_View1.png",
+                        "src": "assets/BBS/BBS_Server_View1.png",
                         "desc": "At present this is pretty utilitarian, but I've got all the relevant data being displayed.  Once the server side functionality ossifies a bit more and I have some of the design language better defined, I plan to iterate on the design and make it a bit more visually engaging."
                     },
                     {
-                        "src": "assets/BBS_Server_View2.png",
+                        "src": "assets/BBS/BBS_Server_View2.png",
                         "desc": "In this shot, we see a live session engaging with an actual environment.  In the arena card, we display a bit of summary information about the active environment."
                     },
                     {
-                        "src": "assets/BBS_Server_View3.png",
+                        "src": "assets/BBS/BBS_Server_View3.png",
                         "desc": "This is a super rough and ready plugin I threw together for testing, but the critical point is that this is actually served by the plugin itself as a JavaScript bundle.  The upshot is that the plugin authors have complete control over what their environment looks like.  I'm no artist, but in the right hands this could lead to some pretty slick results."
                     }
                 ],
                 "concept": [
                     {
-                        "src": "assets/BBS_Logo_Concept.png",
+                        "src": "assets/BBS/BBS_Logo_Concept.png",
                         "desc": "Since most of the source for this project is in Go, C# and JavaScript, a palette suggested itself.  The rest is just an expression of its modular design."
                     },
                     {
-                        "src": "assets/Logo_Board.png",
+                        "src": "assets/BBS/Logo_Board.png",
                         "desc": "I converted the sketch to a set of SVGs in Inkscape to explore some variations on the theme."
                     },
                     {
-                        "src": "assets/BBS_Logo_Final.png",
+                        "src": "assets/BBS/BBS_Logo_Final.png",
                         "desc": "Once I had a couple of variations I liked, I recreated them in Blender to add some depth and polish.  This one's the cubes idea ... obviously."
                     },
                     {
-                        "src": "assets/BBS_Pin_Final.png",
+                        "src": "assets/BBS/BBS_Pin_Final.png",
                         "desc": "Focusing more on the hexagonal aspect of the isometric projection, I created this variation.  It is intended to read as a lapel pin or cuff link."
                     },
                     {
-                        "src": "assets/MontyCarlos.png",
+                        "src": "assets/BBS/MontyCarlos.png",
                         "desc": "I don't know if you saw this too, but something about the lapel pin just screamed luchador mask to me.  So I unleashed Genesis on it and this is the result.  I call him Monty Carlitos Guerrero Castillo.  ¡Sagrado corazón de Marío!"
                     }
                 ]
             },
-            "tactile": {
-                "Hardware": [
+            "tactileSoft": {
+                "documentation": [
                     {
-                        "src": "assets/Vector_Core.png",
-                        "desc": "Vector Core"
+                        "src": "docs/CNN/DataPrep.pdf",
+                        "desc": "Data Preparation Documentation (PDF)"
+                    },
+                    {
+                        "src": "docs/CNN/ModelExploration.pdf",
+                        "desc": "Model Exploration Documentation (PDF)"
+                    },
+                    {
+                        "src": "docs/CNN/ModelRefinement.pdf",
+                        "desc": "Model Refinement Documentation (PDF)"
+                    },
+                    {
+                        "src": "docs/CNN/ModelDeployment.pdf",
+                        "desc": "Model Deployment Documentation (PDF)"
                     }
-                ],
-                "Results": [
+                ]
+            },
+            "tactileHard": {
+                "diagrams": [
                     {
-                        "src": "assets/confusion_matrix.png",
-                        "desc": "Confusion Matrix"
+                        "src": "assets/CNN/High_Level.png",
+                        "desc": "This is a high level diagram of the hardware design.  The core components are the custom microkernel, which executes a custom instruction set architecture (ISA) designed for neural network operations, and the surrounding control logic that manages data flow and interfaces with on chip BRAM."
+                    },
+                    {
+                        "src": "assets/CNN/FSM_Summary.png",
+                        "desc": "This diagram is concerned with the Finite State Machine (FSM) that controls the operation of the microkernel.  The FSM orchestrates the sequence of operations required to execute a convolutional layer, including reading input feature maps, performing computations, and writing output feature maps back to memory."
+                    },
+                    {
+                        "src": "assets/CNN/Math_Unit.png",
+                        "desc": "This diagram focuses on the design of the math unit.  Since the overall hardware will only be concerned with inference, and the model will be pre-trained, we were able to consume nearly all of the multiply/accumulate units on the device to create a highly parallelized design."
+                    }
+                ]
+            },
+            "tactilePython": {
+                "training": [
+                    {
+                        "src": "assets/CNN/Training_Pipeline.png",
+                        "desc": "This diagram illustrates the training pipeline I developed in Python to train the neural network.  It includes data preprocessing steps, the training loop, and the custom quantization aware training process."
+                    },
+                    {
+                        "src": "assets/CNN/Genetic_Algorithm.png",
+                        "desc": "This diagram provides an overview of the genetic algorithm I implemented to optimize the neural network architecture and parameters.  It includes the selection, crossover, and mutation processes used to evolve the population of candidate solutions."
                     }
                 ]
             }
@@ -86,18 +122,19 @@
     </script>
 
     <body>
-        <header>
-            <h1>Jon Kirkpatrick</h1>
-            <div class="tagline">Aspiring Systems Architect & Applied AI Engineer</div>
-            <p>Based in St. John's, NL. Specializing in TBD, but interested in all thing ML/AI</p>
-        </header>
 
+        <header>
+            <div class="header-text">
+                <h1>Jon Kirkpatrick</h1>
+                <div class="tagline">Aspiring Systems Architect & Applied AI Engineer</div>
+                <p>Based in St. John's, NL. and ready to take on new challenges!</p>
+            </div>
+        </header>
+        <h2 align="center">A Sample of My Work</h2>
         <section id="projects">
-            <h2>A Sample of My Work</h2>
-            
             <div class="project-card">
                 <h3>1. Build-a-Bot Stadium (BBS)</h3>
-                <img src="assets/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
+                <img src="assets/BBS/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
                 <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI/ML experiments without being tied
                     to any particular platform, stack, learning paradigm, or environment type, while being able to keep a persistent record of my iterations.
                     </p>
@@ -126,15 +163,13 @@
                         <li>The plugin system is in place, allowing for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
                         <li>There is a stubbed global registration system in place with a UUID-based approach for both clients and servers.</li>
                         <li>I've taken some time to develop a bit of brand identity for the product.</li>
-                        <li>Lots more as well, but let's just look at some pictures ... 
-                            <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">
-                                BBS Gallery
-                            </a>
-                        </li>
+                        <li>Lots more as well, but let's just look at some pictures ... </li>
+                        <div class="links">
+                            <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">BBS Gallery</a>
+                        </div>
                     </ul>
                 <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
-                there's room for a lot of growth.  If I weren't so wrapped up in developing the platform itself, I could already be writing better plugins, deploying non-trivial bot instances on it and getting valuable data in return.
-                For ~three weeks of work, it's actually already almost useful.
+                there's room for a lot of growth.  With careful attention to design and user experience, I think this could be a really powerful tool for learning and experimentation in the AI/ML space.
                 </p>
                 <div>
                     <span class="tech-tag">Go (Golang)</span>
@@ -153,66 +188,54 @@
 
             <div class="project-card">
                 <h3>2. Tactile Pattern Classification</h3>
+                <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
                 <p><strong>The Problem:</strong> A robotic finger equipped with only an IMU sensor array needed to classify tactile patterns in real-time. 
                     Real world data is messy, and it's not always practical to offload processing to cloud infrastructure; hardware's not cheap either.</p>
                 <p><strong>The Approach:</strong> Developed a tremendously flexible hardware implementation of a whole class of convolutional neural networks. 
                     Leveraged SystemVerilog to create a custom ISA and microkernel to allow for flexible neural architectures to operate on extremely lightweight 
                     hardware within certain, strict constraints.</p>
-                    <p><strong>The Current State:</strong> The project is presently stalled, pending renewed interest and greater technical acumen to overcome a few of the remaining challenges, but here's the as-built.</p>
-                    <ul>
-                        <li>Created a custom instruction set architecture (ISA) and microkernel in SystemVerilog to allow for flexible neural network architectures to be implemented on FPGA hardware, without need of a traditional CPU or even a floating point unit.</li>
-                        <li>Developed a genetic algorithm for optimizing the neural network architecture and parameters, using partial training and a light weight Monte Carlo tree search to guide the optimization process.</li>
-                        <li>Implemented a Python-based training pipeline using NumPy, SciPy, and Pandas to preprocess the tactile data and train the neural network.</li>
-                        <li>Created a custom quantization aware training loop to make the jump from float32 to int8 representation less deleterious.</li>
-                    </ul>
-                    <p><strong>Highlights:</strong> Since the project isn't actually on actual hardware, it seems more useful to share some of the successes thus far.  I don't want to undersell 
+                <p><strong>The Current State:</strong> The project is presently pending renewed interest/time and greater technical acumen to overcome a few of the remaining challenges, but here's the as-built.</p>
+                <ul>
+                    <li>Created a custom instruction set architecture (ISA) and microkernel in SystemVerilog to allow for flexible neural network architectures to be implemented on FPGA hardware, without need of a traditional CPU or even a floating point unit.</li>
+                    <li>Developed a genetic algorithm for optimizing the neural network architecture and parameters, using partial training and a light weight Monte Carlo roll out to guide the optimization process.</li>
+                    <li>Implemented a Python-based training pipeline using NumPy, SciPy, and Pandas to preprocess the tactile data and train the neural network.</li>
+                    <li>Created a custom quantization aware training loop to make the jump from float32 to int8 representation less deleterious.</li>
+                </ul>
+                <p><strong>Highlights:</strong> Since the project isn't actually on actual hardware, it seems more useful to share some of the successes thus far.  I don't want to undersell 
                         what I've accomplished, because it's pretty awesome.</p>
-                    <div class="highlight-grid">
-                        <div class="sub-card">
-                            <h4>From Ambiguity to Architecture</h4>
-                            <p>I started with a <strong>minimalist project brief</strong>—essentially a handwritten diagram and a few keywords. I translated these incomplete specifications into a full hardware/software co-design stack, including a custom training pipeline, and FPGA-based inference.</p>
-                            <div class="links">
-                                <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
-                            </div>
-                            <p>
-                                There are three aspects of the hardware design I'm particularly proud of and I'd encourage you to check out the GitHub repository linked below for more details on each of them.
-                                I've only included the dot product module diagram here, but the higher level orchestration layer and the instruction set architecture are also worth a look.  They're called
-                                "conv_core.sv" and "instruction_handler.sv" respectively.  The source code related to the following section is called "int8_vector_core.sv" in the repository.
-                            </p>
+                <div class="highlight-grid">
+                    <div class="sub-card">
+                        <h4>From Ambiguity to Architecture</h4>
+                        <p>I started with a <strong>minimalist project brief</strong>—essentially a handwritten diagram and a few keywords. I translated these incomplete specifications into a full hardware/software co-design stack, 
+                            including a custom training pipeline, and a clear route to FPGA-based inference.</p>
+                        <div class="links">
+                            <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
                         </div>
-                        <div class="sub-card">
-                            <h4>Pipelined Adder Tree</h4>
-                            <p>
-                                This is perhaps the aspect of the hardware design I'm most proud of, or at least it's the most easily demonstrable.  It's a module, capable of handling multiple small operations in parallel, 
-                                when larger operations aren't needed, and it performs these small operations more quickly.
-                                An FPGA is a very different animal than a CPU or GPU.  It's not a collection of cores, but rather a sea of logic blocks and memory, which can be configured to operate 
-                                in whatever way you see fit.  This means that, with the right design, you can achieve a level of parallelization that would be unimaginable on a traditional architecture.  
-                                I'm going to leave the diagram to speak for itself, but suffice it to say that this design warrants a follow up question or two if you're so inclined.
-                            </p>
-                            <img width="100%" src="docs/Vector_Core.png" alt="Adder Tree Architecture" class="artifact-img">
-                            <p>
-                                Humorously/unfortunately, my memory management strategy negated nearly all of the benefits of parallelization.  That's one of the left-to-do items for future optimization.
-                                Once that problem is solved, the adder will be able to operate at full capacity, spitting out results every other clock cycle.
-                            </p>
-                        </div>
-
-                        <div class="sub-card">
-                            <h4>Int8 Inference Fidelity</h4>
-                            <p>Proved that a minimal CNN could maintain 90%+ classification accuracy even when restricted to a tiny integer domain. </p>
-                        </div>
-
-                        <div class="sub-card">
-                            <h4>"Headless" Microkernel</h4>
-                            <p>The SystemVerilog core is instruction-driven. This allows the model architecture and weights to be updated at runtime via a simple serial interface, effectively creating a "CNN operating system."</p>
+                        <p>
+                            When I started this research, I had no preconceived notions about how to solve the problem, nor the technical skills to do so.  In the above attached document, you may note that I scribbled 
+                            "get the CNN on the FPGA" towards the bottom.  At that point, I honestly would have had difficulty telling you (a) what a CNN was, (b) how an FPGA fundamentally differed from a CPU or GPU, 
+                            and (c) what IMU stood for.  Over the course of the project, that changed dramatically.
+                        </p>
+                        <p>
+                            I began with a Pickled dataset I couldn't access of raw IMU readings I didn't really understand and a fervent desire to make it work.  The following galleries highlights some of the key milestones
+                            along the way, and the accompanying documentation fills in some of the details.
+                        </p>
+                        <div class="links">
+                            <a href="javascript:void(0)" onclick="launchGallery('tactileSoft', 'documentation')">Documenting the Progress</a>
+                            <a href="javascript:void(0)" onclick="launchGallery('tactileHard', 'diagrams')">A Glance at the Hardware Design</a>
+                            <a href="javascript:void(0)" onclick="launchGallery('tactilePython', 'training')">Training and Modular Design</a>
                         </div>
                     </div>
-                <div>
-                    <span class="tech-tag">SystemVerilog</span>
-                    <span class="tech-tag">FPGA Co-Design</span>
-                    <span class="tech-tag">Python (NumPy/SciPy/Pandas)</span>
-                </div>
-                <div class="links">
-                    <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
+                    <div class="sub-card">
+                    </div>
+                    <div>
+                        <span class="tech-tag">SystemVerilog</span>
+                        <span class="tech-tag">FPGA Co-Design</span>
+                        <span class="tech-tag">Python (NumPy/SciPy/Pandas)</span>
+                    </div>
+                    <div class="links">
+                        <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
+                    </div>
                 </div>
             </div>
         </section>
@@ -230,6 +253,8 @@
                 <p id="imageCaption"></p>
                 
                 <img id="mainGalleryImage" src="" alt="Gallery View">
+
+                <iframe id="pdfViewer" src=""></iframe>
             </div>
         </div>
     </body>
