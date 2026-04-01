@@ -5,7 +5,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jon Kirkpatrick</title>
-        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="style.css?v=1.0">
     </head>
 
     <script src="gallery.js"></script>
@@ -191,18 +191,17 @@
                 <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
                 <p><strong>The Problem:</strong> A robotic finger equipped with only an IMU sensor array needed to classify tactile patterns in real-time. 
                     Real world data is messy, and it's not always practical to offload processing to cloud infrastructure; hardware's not cheap either.</p>
-                <p><strong>The Approach:</strong> Developed a tremendously flexible hardware implementation of a whole class of convolutional neural networks. 
-                    Leveraged SystemVerilog to create a custom ISA and microkernel to allow for flexible neural architectures to operate on extremely lightweight 
-                    hardware within certain, strict constraints.</p>
+                <p><strong>The Approach:</strong> Developed a hardware implementation of a whole class of convolutional neural networks, and managed to do so with bit level agreement between the software and hardware versions.
+                    </p>
                 <p><strong>The Current State:</strong> The project is presently pending renewed interest/time and greater technical acumen to overcome a few of the remaining challenges, but here's the as-built.</p>
                 <ul>
-                    <li>Created a custom instruction set architecture (ISA) and microkernel in SystemVerilog to allow for flexible neural network architectures to be implemented on FPGA hardware, without need of a traditional CPU or even a floating point unit.</li>
-                    <li>Developed a genetic algorithm for optimizing the neural network architecture and parameters, using partial training and a light weight Monte Carlo roll out to guide the optimization process.</li>
-                    <li>Implemented a Python-based training pipeline using NumPy, SciPy, and Pandas to preprocess the tactile data and train the neural network.</li>
-                    <li>Created a custom quantization aware training loop to make the jump from float32 to int8 representation less deleterious.</li>
+                    <li>Created a custom instruction set architecture (ISA) and microkernel in SystemVerilog to allow for a whole related family of neural network architectures to be implemented on FPGA hardware, without recompilation or flashing between different models.</li>
+                    <li>Wrote a Python module for interpreting a dense numerical model specification as a fully realizable Torch model that is behaviourily identical to the eventual hardware version, but with a few extra features.</li>
+                    <li>Implemented a Python-based training pipeline using NumPy, SciPy, and PyTorch to preprocess the tactile data and train the neural network.</li>
+                    <li>Designed a custom quantization aware training loop from scratch to make the transition from float32 to int8 representation less deleterious.</li>
+                    <li>Created a bridging script taking the quantized weights and converting them to a monolithic hex file along with a second file containing the custom hardware instructions describing the model for the FPGA.</li>
                 </ul>
-                <p><strong>Highlights:</strong> Since the project isn't actually on actual hardware, it seems more useful to share some of the successes thus far.  I don't want to undersell 
-                        what I've accomplished, because it's pretty awesome.</p>
+                <p><strong>Highlights:</strong> This is still a work in progress, with much yet to accomplish, but the following section outlines some of the key achievements.</p>
                 <div class="highlight-grid">
                     <div class="sub-card">
                         <h4>From Ambiguity to Architecture</h4>
@@ -212,9 +211,7 @@
                             <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
                         </div>
                         <p>
-                            When I started this research, I had no preconceived notions about how to solve the problem, nor the technical skills to do so.  In the above attached document, you may note that I scribbled 
-                            "get the CNN on the FPGA" towards the bottom.  At that point, I honestly would have had difficulty telling you (a) what a CNN was, (b) how an FPGA fundamentally differed from a CPU or GPU, 
-                            and (c) what IMU stood for.  Over the course of the project, that changed dramatically.
+                            The whole research project was guided by a single constraint:  there would be no division or modulo operations in the hardware design.  This was somewhat self-imposed, but it would prove to be beneficial and perhaps even necessary.
                         </p>
                         <p>
                             I began with a Pickled dataset I couldn't access of raw IMU readings I didn't really understand and a fervent desire to make it work.  The following galleries highlights some of the key milestones
@@ -231,7 +228,7 @@
                     <div>
                         <span class="tech-tag">SystemVerilog</span>
                         <span class="tech-tag">FPGA Co-Design</span>
-                        <span class="tech-tag">Python (NumPy/SciPy/Pandas)</span>
+                        <span class="tech-tag">Python (NumPy/SciPy/PyTorch)</span>
                     </div>
                     <div class="links">
                         <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
