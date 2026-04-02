@@ -5,13 +5,13 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jon Kirkpatrick</title>
-        <link rel="stylesheet" href="style.css?v=1.0">
+        <link rel="stylesheet" href="style.css?v=1.2">
     </head>
 
-    <script src="gallery.js"></script>
+    <script src="gallery.js?v=1.2"></script>
 
     <script>
-        const allProjectData = {
+        window.allProjectData = {
             "bbs": {
                 "client": [
                     {
@@ -119,8 +119,8 @@
         };
 
         function launchGallery(projectId, startTab) {
-            if (allProjectData[projectId]) {
-                openGallery(allProjectData[projectId], startTab);
+            if (window.allProjectData[projectId]) {
+                openGallery(window.allProjectData[projectId], startTab);
             }
         }
     </script>
@@ -134,9 +134,16 @@
                 <p>Based in St. John's, NL. and ready to take on new challenges!</p>
             </div>
         </header>
-        <h2 align="center">A Sample of My Work</h2>
+        <div class="page-shell">
+            <nav id="tocNav" class="toc-nav" aria-label="Table of contents">
+                <h2>On This Page</h2>
+                <ul id="tocList"></ul>
+            </nav>
+
+            <main id="mainContent">
+        <h2 id="work-samples" align="center">A Sample of My Work</h2>
         <section id="projects">
-            <div class="project-card">
+            <div class="project-card" data-bg-a="#c4c4c4" data-bg-b="#ececec" data-bg-base="#e5e5e5">
                 <h3>1. Build-a-Bot Stadium (BBS)</h3>
                 <img src="assets/BBS/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
                 <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI/ML experiments without being tied
@@ -175,6 +182,13 @@
                 <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
                 there's room for a lot of growth.  With careful attention to design and user experience, I think this could be a really powerful tool for learning and experimentation in the AI/ML space.
                 </p>
+                <div class="inline-gallery-shell">
+                    <div class="gallery-heading-row">
+                        <h4>Visual Walkthrough</h4>
+                        <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">Open Full Gallery</a>
+                    </div>
+                    <div class="inline-gallery" data-project="bbs" data-tabs="client,server,concept"></div>
+                </div>
                 <div>
                     <span class="tech-tag">Go (Golang)</span>
                     <span class="tech-tag">C# (with Avalonia)</span>  
@@ -190,7 +204,7 @@
                 </div>
             </div>
 
-            <div class="project-card">
+            <div class="project-card" data-bg-a="#9fe6c9" data-bg-b="#c8ddff" data-bg-base="#f2fff8">
                 <h3>2. Tactile Pattern Classification</h3>
                 <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
                 <p><strong>The Problem:</strong> I was given noisy IMU data from a robotic finger and asked to classify tactile patterns in real time. No fancy sensor suite, no cloud safety net, just "make this work on constrained hardware."</p>
@@ -217,12 +231,14 @@
                             I started with a pickled dataset I couldn't even open at first and raw IMU traces I barely understood. The galleries below show the messy path from that point to something approaching deployable.
                         </p>
                         <div class="links">
-                            <a href="javascript:void(0)" onclick="launchGallery('tactileSoft', 'documentation')">Documenting the Progress</a>
                             <a href="javascript:void(0)" onclick="launchGallery('tactileHard', 'diagrams')">A Glance at the Hardware Design</a>
                             <a href="javascript:void(0)" onclick="launchGallery('tactilePython', 'training')">Training and Modular Design</a>
                         </div>
                     </div>
-                    <div class="sub-card">
+                    <div class="sub-card doc-panel">
+                        <h4>Documentation</h4>
+                        <p>The PDFs live here so they are easy to scan and open without hijacking the image gallery flow.</p>
+                        <div id="tactileDocLinks" class="doc-links"></div>
                     </div>
                     <div>
                         <span class="tech-tag">SystemVerilog</span>
@@ -233,8 +249,24 @@
                         <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
                     </div>
                 </div>
+                <div class="inline-gallery-shell">
+                    <div class="gallery-heading-row">
+                        <h4>Hardware Snapshots</h4>
+                        <a href="javascript:void(0)" onclick="launchGallery('tactileHard', 'diagrams')">Open Full Gallery</a>
+                    </div>
+                    <div class="inline-gallery" data-project="tactileHard" data-tabs="diagrams"></div>
+                </div>
+                <div class="inline-gallery-shell">
+                    <div class="gallery-heading-row">
+                        <h4>Training Outputs</h4>
+                        <a href="javascript:void(0)" onclick="launchGallery('tactilePython', 'training')">Open Full Gallery</a>
+                    </div>
+                    <div class="inline-gallery" data-project="tactilePython" data-tabs="training"></div>
+                </div>
             </div>
         </section>
+            </main>
+        </div>
         
         <div id="galleryOverlay" class="modal">
             <span class="close-btn" onclick="closeGallery()">&times;</span>
