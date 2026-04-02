@@ -103,12 +103,16 @@
             "tactilePython": {
                 "training": [
                     {
-                        "src": "assets/CNN/Training_Pipeline.png",
-                        "desc": "This diagram illustrates the training pipeline I developed in Python to train the neural network.  It includes data preprocessing steps, the training loop, and the custom quantization aware training process."
+                        "src": "assets/CNN/Training/Baseline_Final_Confusion.png",
+                        "desc": "This confusion matrix shows the performance of the baseline model after our initial round of training.  It manages to achieve ~92% validation accuracy, but struggles to separate the two denim samples.  This may not make immediate sense, but the model is described by spec = (13, 128, [(7, 64, None), (3, 128, 2), (13, 256, 16), (3, 256, None)], 12).  This is the compact form our model building layer expects."
                     },
                     {
-                        "src": "assets/CNN/Genetic_Algorithm.png",
-                        "desc": "This diagram provides an overview of the genetic algorithm I implemented to optimize the neural network architecture and parameters.  It includes the selection, crossover, and mutation processes used to evolve the population of candidate solutions."
+                        "src": "assets/CNN/Training/Baseline_Summary.png",
+                        "desc": "This is a summary of the training process and illustrates an interesting phenomenon inherent in our regime.  In Loss Over Time, the validation loss bottoms out early and begins to climb.  Normally this would be indicative of overfitting, but in this case it's a necessary part of the training process.  At five epoch intervals, we alternate between a compression stage and a quantization stage.  After quantization, the layer is removed from the training process and the model is allowed to adjust to the loss of capacity before we move on to the next layer.  On the second plot, we see the effect this has on the accuracy as well.  Each of the compression/quantization stages has a visible impact on the accuracy, however it holds exceptionally steady over the course of training.  It will often crest at about 93% before settling to about 92% by the end of training."
+                    },
+                    {
+                        "src": "assets/CNN/Training/SuperCon_Summary.png",
+                        "desc": "This is a summary of the training process for a bit of a silly model.  I simply prompted CoPilot to write me the best model it could think of without any regard for hardware constraints.  I wanted to see how much latent information was actually in my dataset and how problematic my hardware constraints were, with the least amount of effort.  I was pretty edified by the result.  It consumes approximately 30x the memory required by the deployable model and achieves about 96% validation accuracy.  It's not exactly scientific, but it's a 4% boost that cost 7.5x the parameters and 30x the overall memory footprint.  No float32 numbers were harmed in the making of this model; we skipped quantization entirely."
                     }
                 ]
             }
@@ -189,33 +193,28 @@
             <div class="project-card">
                 <h3>2. Tactile Pattern Classification</h3>
                 <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
-                <p><strong>The Problem:</strong> A robotic finger equipped with only an IMU sensor array needed to classify tactile patterns in real-time. 
-                    Real world data is messy, and it's not always practical to offload processing to cloud infrastructure; hardware's not cheap either.</p>
-                <p><strong>The Approach:</strong> Developed a hardware implementation of a whole class of convolutional neural networks, and managed to do so with bit level agreement between the software and hardware versions.
-                    </p>
-                <p><strong>The Current State:</strong> The project is presently pending renewed interest/time and greater technical acumen to overcome a few of the remaining challenges, but here's the as-built.</p>
+                <p><strong>The Problem:</strong> I was given noisy IMU data from a robotic finger and asked to classify tactile patterns in real time. No fancy sensor suite, no cloud safety net, just "make this work on constrained hardware."</p>
+                <p><strong>The Approach:</strong> I built the full pipeline end to end: model design and training in Python, a custom instruction set architecture (ISA) for the hardware runtime, and scripts to generate all deployment artifacts without hand transcribing model specs or weights.</p>
+                <p><strong>The Current State:</strong> This is still very much a living project, but the core stack works and is reproducible.</p>
                 <ul>
-                    <li>Created a custom instruction set architecture (ISA) and microkernel in SystemVerilog to allow for a whole related family of neural network architectures to be implemented on FPGA hardware, without recompilation or flashing between different models.</li>
-                    <li>Wrote a Python module for interpreting a dense numerical model specification as a fully realizable Torch model that is behaviourily identical to the eventual hardware version, but with a few extra features.</li>
-                    <li>Implemented a Python-based training pipeline using NumPy, SciPy, and PyTorch to preprocess the tactile data and train the neural network.</li>
-                    <li>Designed a custom quantization aware training loop from scratch to make the transition from float32 to int8 representation less deleterious.</li>
-                    <li>Created a bridging script taking the quantized weights and converting them to a monolithic hex file along with a second file containing the custom hardware instructions describing the model for the FPGA.</li>
+                    <li>I wrote the ISA myself along with a SystemVerilog parser/translator so one hardware implementation can execute a family of similar CNN models without reflashing for each architecture tweak.</li>
+                    <li>I built a model-spec-driven Python layer that can instantiate compatible Torch models from compact numeric descriptions, so software behavior stays aligned with hardware expectations.</li>
+                    <li>The training flow is now nearly autonomous: data prep, warm-up, compression/quantization stages, artifact export, and plotting can be run from scripts instead of manual notebook choreography.</li>
+                    <li>All hardware deployment artifacts are script-generated: instruction stream, quantized weights, and intermediate IR/metadata. No manual transcription step required.</li>
+                    <li>The small int8 deployable model is about 112k parameters and lands roughly 4% behind a much larger float32 model (~840k params, with a more advanced architecture), which I consider a solid trade for FPGA deployment constraints.</li>
                 </ul>
-                <p><strong>Highlights:</strong> This is still a work in progress, with much yet to accomplish, but the following section outlines some of the key achievements.</p>
                 <div class="highlight-grid">
                     <div class="sub-card">
                         <h4>From Ambiguity to Architecture</h4>
-                        <p>I started with a <strong>minimalist project brief</strong>—essentially a handwritten diagram and a few keywords. I translated these incomplete specifications into a full hardware/software co-design stack, 
-                            including a custom training pipeline, and a clear route to FPGA-based inference.</p>
+                        <p>I started with a <strong>minimalist project brief</strong>, a pile of awkward data, and a lot of uncertainty. I turned that into a working hardware/software co-design flow with a repeatable path from training to FPGA-ready artifacts.</p>
                         <div class="links">
                             <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
                         </div>
                         <p>
-                            The whole research project was guided by a single constraint:  there would be no division or modulo operations in the hardware design.  This was somewhat self-imposed, but it would prove to be beneficial and perhaps even necessary.
+                            One of the main (self-imposed) constraints was no divide or modulo operations in hardware. That forced better design decisions early and kept the architecture disciplined.
                         </p>
                         <p>
-                            I began with a Pickled dataset I couldn't access of raw IMU readings I didn't really understand and a fervent desire to make it work.  The following galleries highlights some of the key milestones
-                            along the way, and the accompanying documentation fills in some of the details.
+                            I started with a pickled dataset I couldn't even open at first and raw IMU traces I barely understood. The galleries below show the messy path from that point to something approaching deployable.
                         </p>
                         <div class="links">
                             <a href="javascript:void(0)" onclick="launchGallery('tactileSoft', 'documentation')">Documenting the Progress</a>
