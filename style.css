@@ -22,6 +22,10 @@ body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     transition: background 420ms ease;
 }
 
+body.modal-open {
+    overflow: hidden;
+}
+
 html {
     scroll-behavior: smooth;
 }
@@ -189,6 +193,11 @@ h3 {
     color: #2c3036;
 }
 
+.project-card h2 {
+    margin-top: 0;
+    color: var(--brand);
+}
+
 .card-logo {
     float: right;
     width: 256px;
@@ -210,6 +219,34 @@ h3 {
     border: 1px solid #e8e9ec;
     border-radius: 12px;
     padding: 16px;
+}
+
+.trailer-shell {
+    margin-top: 16px;
+    border: 1px solid #d8dfe7;
+    border-radius: 12px;
+    overflow: hidden;
+    background: #0f1620;
+}
+
+.trailer-video {
+    display: block;
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    background: #0f1620;
+}
+
+#trailerOverlay .modal-content {
+    width: min(1000px, 92%);
+}
+
+.trailer-modal-content {
+    max-width: 1000px;
+}
+
+.trailer-modal-card {
+    text-align: left;
 }
 
 .doc-panel p {

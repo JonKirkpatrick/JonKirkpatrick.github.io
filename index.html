@@ -84,7 +84,7 @@
                     },
                     {
                         "src": "docs/CNN/CNN_By_Hand.pdf",
-                        "desc": "By Hand:  Honestly, I don't think there are a lot of people who can say they've done this.  I dramatically simplified a model and its bitwidth, to actually calculate a whole forward pass by hand.  There's a stub in there about the mathematics of a backwards pass as well, but I'm not that much of a masochist."
+                        "desc": "By Hand:  Honestly, I don't think there are a lot of people who can say they've done this.  I dramatically simplified a model and its bitwidth, to actually calculate a whole forward pass by hand.  I wouldn't have been able to arrive at the simplification above without first wrestling with the math."
                     }
                 ]
             },
@@ -119,6 +119,26 @@
                         "desc": "This is a summary of the training process for a bit of a silly model.  I simply prompted CoPilot to write me the best model it could think of without any regard for hardware constraints.  I wanted to see how much latent information was actually in my dataset and how problematic my hardware constraints were, with the least amount of effort.  I was pretty edified by the result.  It consumes approximately 30x the memory required by the deployable model and achieves about 96% validation accuracy.  It's not exactly scientific, but it's a 4% boost that cost 7.5x the parameters and 30x the overall memory footprint.  No float32 numbers were harmed in the making of this model; we skipped quantization entirely."
                     }
                 ]
+            },
+            "accolades": {
+                "Awards": [
+                    {
+                        "src": "assets/About/Deans_List.pdf",
+                        "desc": "I was named to the dean's list in my final year at Memorial University.  With each passing semester, I became more aligned with the academic environment, culminating in a strong final year.  I was also fortunate to be honoured with a Memorial Centennial Scholarship in recognition of my academic achievements and potential as well."
+                    },
+                    {
+                        "src": "assets/About/3200_AStar.pdf",
+                        "desc": "While this is just an award for competence in algorithm design for a single algorithm in a single course, I certainly did pour myself into it."
+                    },
+                    {
+                        "src": "assets/About/3200_BFS.pdf",
+                        "desc": "Same as the previous one, but for a rather speedy BFS implementation.  I was pretty proud of this one in particular, because its not a hard algorithm, the class was large and there isn't a lot of room for creativity.  Both this and the A* implementation were written in JavaScript, so I just focused on keeping things constant time where possible and minimizing the number of passes over the data."
+                    },
+                    {
+                        "src": "assets/About/BestGame_HoneyDew.pdf",
+                        "desc": "This is just a fun one.  We wrote a game engine in C++ over the course of the semester, learning about ECS and some game principles along the way.  It culminated in small groups implementing a game on top of their engines.  Ours was called Honeydew Hollow and it involved both top down and side scrolling components, with some pretty decent shader work and even some homemade assets."
+                    }
+                ]
             }
         };
 
@@ -134,7 +154,7 @@
         <header>
             <div class="header-text">
                 <h1>Jon Kirkpatrick</h1>
-                <div class="tagline">Aspiring Systems Architect & Applied AI Engineer</div>
+                <div class="tagline">Aspiring AI Engineer</div>
                 <p>Based in St. John's, NL. and ready to take on new challenges!</p>
             </div>
         </header>
@@ -145,6 +165,18 @@
             </nav>
 
             <main id="mainContent">
+        <section id="about">
+            <div class="project-card" data-bg-a="#ffe8d4" data-bg-b="#fff0db" data-bg-base="#fffaf3">
+                <h2>About Me</h2>
+                <p>I'm a recent graduate from Memorial University with a degree in pure mathematics and computer science. Prior to my brief sojourn in academia, I spent 15 years diagnosing and repairing damaged vehicles, and a further year or two in the field of electronics manufacturing.  It's left me with a keen attention to detail and a methodical approach to problem-solving, even when the problem is complex and not fully specified.</p>
+                <div class="links">
+                    <a href="docs/jkirkpatrick_resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+                    <a href="javascript:void(0)" onclick="launchGallery('accolades', 'Awards')">Academic Recognitions</a>
+                    <a href="javascript:void(0)" onclick="openTrailerModal()">Video Game Trailer</a>
+                </div>
+            </div>
+        </section>
+
         <h2 id="work-samples" align="center">A Sample of My Work</h2>
         <section id="projects">
             <div class="project-card" data-bg-a="#c4c4c4" data-bg-b="#ececec" data-bg-base="#e5e5e5">
@@ -155,9 +187,9 @@
                     </p>
                 <p><strong>The Approach:</strong> This was/is an ambitious project, so I tackled it in stages.
                     <ul>
-                        <li>Considered what I actually needed from the platform and how I wanted to interact with it.</li>
-                        <li>Worked with CoPilot to flesh out engineering documentation, and create a plan of attack.</li>
-                        <li>Finally began to implement the solution:
+                        <li>I considered what I actually needed from the platform and how I wanted to interact with it.</li>
+                        <li>Then worked with modern AI tools to flesh out preliminary engineering documentation, and create a plan of attack.</li>
+                        <li>With a plan in place, and a modicum of direction, I dove into development:
                             <ul>
                                 <li>Implemented a Go-based server backend to host environments and manage bot instances.</li>
                                 <li>Created a plugin system to allow for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
@@ -178,10 +210,7 @@
                         <li>The plugin system is in place, allowing for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
                         <li>There is a stubbed global registration system in place with a UUID-based approach for both clients and servers.</li>
                         <li>I've taken some time to develop a bit of brand identity for the product.</li>
-                        <li>Lots more as well, but let's just look at some pictures ... </li>
-                        <div class="links">
-                            <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">BBS Gallery</a>
-                        </div>
+                        <li>Lots more as well, but let's focus on the future ... </li>
                     </ul>
                 <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
                 there's room for a lot of growth.  With careful attention to design and user experience, I think this could be a really powerful tool for learning and experimentation in the AI/ML space.
@@ -234,10 +263,6 @@
                         <p>
                             I started with a pickled dataset I couldn't even open at first and raw IMU traces I barely understood. The galleries below show the messy path from that point to something approaching deployable.
                         </p>
-                        <div class="links">
-                            <a href="javascript:void(0)" onclick="launchGallery('tactileHard', 'diagrams')">A Glance at the Hardware Design</a>
-                            <a href="javascript:void(0)" onclick="launchGallery('tactilePython', 'training')">Training and Modular Design</a>
-                        </div>
                     </div>
                     <div class="sub-card doc-panel">
                         <h4>Documentation</h4>
@@ -287,6 +312,25 @@
                 <img id="mainGalleryImage" src="" alt="Gallery View">
 
                 <iframe id="pdfViewer" src=""></iframe>
+            </div>
+        </div>
+
+        <div id="trailerOverlay" class="modal" onclick="closeTrailerModal(event)">
+            <span class="close-btn" onclick="closeTrailerModal()">&times;</span>
+            <div class="modal-content trailer-modal-content" onclick="event.stopPropagation()">
+                <div class="project-card trailer-modal-card" data-bg-a="#dcecff" data-bg-b="#edf6ff" data-bg-base="#f8fbff">
+                    <h2>Video Game Trailer</h2>
+                    <p>This is the trailer for the game I mentioned in the "Academic Recognitions" section. It's the culmination of a semester of collaborative work, building much of the engine itself across mini-projects.  The game is really just a test drive of the engine and an opportunity to showcase the capabilities of the system and be a little playful as well.</p>
+                    <div class="trailer-shell">
+                        <video id="trailerVideo" class="trailer-video" controls preload="metadata" playsinline>
+                            <source src="assets/About/Project_trailer.mp4" type="video/mp4">
+                            Sorry, your browser does not support embedded video.
+                        </video>
+                    </div>
+                    <div class="links">
+                        <a href="assets/About/Project_trailer.mp4" target="_blank" rel="noopener noreferrer">Open MP4</a>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
