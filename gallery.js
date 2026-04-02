@@ -267,42 +267,6 @@ function applyBackgroundFromCard(card) {
     setPageBackgroundAccent(accentA, accentB, baseBg);
 }
 
-function updateBackgroundByActiveCard(anchorY) {
-    if (!projectCards.length) return;
-
-    const firstTop = projectCards[0].getBoundingClientRect().top + window.scrollY;
-    if (anchorY < firstTop) {
-        if (activeBackgroundCardIndex !== -1) {
-            setPageBackgroundAccent(defaultBgAccentA, defaultBgAccentB, defaultBgBase);
-            activeBackgroundCardIndex = -1;
-        }
-        return;
-    }
-
-    let nextActiveIndex = projectCards.length - 1;
-    for (let i = 0; i < projectCards.length; i += 1) {
-        const card = projectCards[i];
-        const rect = card.getBoundingClientRect();
-        const cardTop = rect.top + window.scrollY;
-        const cardBottom = cardTop + rect.height;
-
-        if (anchorY >= cardTop && anchorY < cardBottom) {
-            nextActiveIndex = i;
-            break;
-        }
-
-        if (anchorY < cardTop) {
-            nextActiveIndex = Math.max(0, i - 1);
-            break;
-        }
-    }
-
-    if (nextActiveIndex === activeBackgroundCardIndex) return;
-
-    const activeCard = projectCards[nextActiveIndex];
-    applyBackgroundFromCard(activeCard);
-}
-
 function updateTocActiveByScroll() {
     if (!tocHeadings.length) return;
 
@@ -320,7 +284,10 @@ function updateTocActiveByScroll() {
     }
 
     setActiveTocLink(activeHeading.id);
-    updateBackgroundByActiveCard(anchorY);
+
+    // Background gradient follows the same active heading: find its parent card and apply its colors
+    const activeCard = activeHeading.closest('.project-card');
+    applyBackgroundFromCard(activeCard);
 }
 
 function requestTocActiveUpdate() {

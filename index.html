@@ -68,19 +68,23 @@
                 "documentation": [
                     {
                         "src": "docs/CNN/DataPrep.pdf",
-                        "desc": "Data Preparation Documentation (PDF)"
+                        "desc": "The Trouble With Pickles:  A brief intro to my initial struggles with the dataset and how I ended up with something I could actually work with."
                     },
                     {
                         "src": "docs/CNN/ModelExploration.pdf",
-                        "desc": "Model Exploration Documentation (PDF)"
+                        "desc": "Find an Architecture by GA:  This never quite made it to the final cut, but initially I had been using a GA to iterate through a large space of potential model architectures.  I think I still have the scripts I used to run the GA, so if you're interested in that process I can share them as well."
                     },
                     {
                         "src": "docs/CNN/ModelRefinement.pdf",
-                        "desc": "Model Refinement Documentation (PDF)"
+                        "desc": "Split-Model Quantization:  Lamentably, this is slightly vestigial too.  I've moved on quite a bit from this approach, but it was the initial inspiration for the quantization you'll find in the repo."
                     },
                     {
                         "src": "docs/CNN/ModelDeployment.pdf",
-                        "desc": "Model Deployment Documentation (PDF)"
+                        "desc": "I call it the Ouroboros Core:  When I realized that every single layer was essentially the same operation with maybe a transposition or some minor change to the interpretation, I realized I could just let a single module keep eating its own output.  The models essentially just 'time-multiplex'?"
+                    },
+                    {
+                        "src": "docs/CNN/CNN_By_Hand.pdf",
+                        "desc": "By Hand:  Honestly, I don't think there are a lot of people who can say they've done this.  I dramatically simplified a model and its bitwidth, to actually calculate a whole forward pass by hand.  There's a stub in there about the mathematics of a backwards pass as well, but I'm not that much of a masochist."
                     }
                 ]
             },
@@ -237,7 +241,7 @@
                     </div>
                     <div class="sub-card doc-panel">
                         <h4>Documentation</h4>
-                        <p>The PDFs live here so they are easy to scan and open without hijacking the image gallery flow.</p>
+                        <p>This is a sort of journal of my thoughts as the project evolved.</p>
                         <div id="tactileDocLinks" class="doc-links"></div>
                     </div>
                     <div>
