@@ -1,12 +1,12 @@
 :root {
     --brand: #cc5d22;
     --ink: #1b1c1f;
-    --bg: #fffaf3;
+    --bg: #fffdf5;
     --paper: #ffffff;
     --muted: #5a6068;
     --line: #ddd;
-    --bg-accent-a: #ffe8d4;
-    --bg-accent-b: #fff0db;
+    --bg-accent-a: #f9eb9d;
+    --bg-accent-b: #fdf6d0;
 }
 
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
@@ -376,6 +376,16 @@ h3 {
     padding-top: 38px;
 }
 
+#galleryOverlay .modal-content {
+    padding-top: 72px;
+}
+
+.gallery-modal-card {
+    margin: 0;
+    background: linear-gradient(180deg, #ffffff 0%, #fffdf9 100%);
+    border-color: #e6e8ec;
+}
+
 #mainGalleryImage {
     width: auto;
     margin: 0 auto;
@@ -398,15 +408,30 @@ h3 {
 
 .gallery-controls {
     margin-top: 20px;
-    color: white;
+    color: #2f3741;
 }
 
 .close-btn {
-    position: absolute;
-    top: 20px; right: 35px;
-    color: #f1f1f1;
+    position: fixed;
+    top: 16px;
+    right: 20px;
+    z-index: 1100;
+    width: 44px;
+    height: 44px;
+    border-radius: 999px;
+    border: 1px solid rgba(204, 93, 34, 0.45);
+    background: rgba(255, 250, 243, 0.96);
+    color: var(--brand);
+    line-height: 40px;
+    text-align: center;
     font-size: 40px;
     cursor: pointer;
+    box-shadow: 0 8px 18px rgba(27, 28, 31, 0.22);
+    user-select: none;
+}
+
+.close-btn:hover {
+    background: #fff1e2;
 }
 
 .tab-bar {
@@ -417,9 +442,9 @@ h3 {
 }
 
 .tab-link {
-    background: none;
+    background: #fff;
     border: 1px solid var(--brand);
-    color: white;
+    color: var(--brand);
     padding: 8px 16px;
     cursor: pointer;
     border-radius: 4px;
@@ -432,8 +457,8 @@ h3 {
 }
 
 #imageCaption {
-    background: rgba(255, 255, 255, 0.1);
-    color: #eee;
+    background: #f8fafc;
+    color: #2f3a44;
     padding: 15px;
     margin: 10px auto 20px;
     border-radius: 4px;
@@ -477,6 +502,24 @@ h3 {
     .links {
         flex-wrap: wrap;
         gap: 12px;
+    }
+
+    #galleryOverlay .modal-content {
+        width: min(1100px, 96%);
+        padding-top: 64px;
+    }
+
+    .gallery-modal-card {
+        padding: 16px;
+    }
+
+    .close-btn {
+        top: 10px;
+        right: 10px;
+        width: 42px;
+        height: 42px;
+        line-height: 38px;
+        font-size: 36px;
     }
 }
 

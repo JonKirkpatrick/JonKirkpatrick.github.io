@@ -72,7 +72,7 @@
                     },
                     {
                         "src": "docs/CNN/ModelExploration.pdf",
-                        "desc": "Find an Architecture by GA:  This never quite made it to the final cut, but initially I had been using a GA to iterate through a large space of potential model architectures.  I think I still have the scripts I used to run the GA, so if you're interested in that process I can share them as well."
+                        "desc": "Architecture Search by GA:  This never quite made it to the final cut, but initially I had been using a GA to iterate through a large space of potential model architectures.  I think I still have the scripts I used to run the GA, so if you're interested in that process I can share them as well."
                     },
                     {
                         "src": "docs/CNN/ModelRefinement.pdf",
@@ -102,9 +102,7 @@
                         "src": "assets/CNN/Math_Unit.png",
                         "desc": "This diagram focuses on the design of the math unit.  Since the overall hardware will only be concerned with inference, and the model will be pre-trained, we were able to consume nearly all of the multiply/accumulate units on the device to create a highly parallelized design."
                     }
-                ]
-            },
-            "tactilePython": {
+                ],
                 "training": [
                     {
                         "src": "assets/CNN/Training/Baseline_Final_Confusion.png",
@@ -123,21 +121,57 @@
             "accolades": {
                 "Awards": [
                     {
-                        "src": "assets/About/Deans_List.pdf",
+                        "src": "assets/About/Deans_List.png",
                         "desc": "I was named to the dean's list in my final year at Memorial University.  With each passing semester, I became more aligned with the academic environment, culminating in a strong final year.  I was also fortunate to be honoured with a Memorial Centennial Scholarship in recognition of my academic achievements and potential as well."
                     },
                     {
-                        "src": "assets/About/3200_AStar.pdf",
+                        "src": "assets/About/3200_AStar.png",
                         "desc": "While this is just an award for competence in algorithm design for a single algorithm in a single course, I certainly did pour myself into it."
                     },
                     {
-                        "src": "assets/About/3200_BFS.pdf",
+                        "src": "assets/About/3200_BFS.png",
                         "desc": "Same as the previous one, but for a rather speedy BFS implementation.  I was pretty proud of this one in particular, because its not a hard algorithm, the class was large and there isn't a lot of room for creativity.  Both this and the A* implementation were written in JavaScript, so I just focused on keeping things constant time where possible and minimizing the number of passes over the data."
                     },
                     {
-                        "src": "assets/About/BestGame_HoneyDew.pdf",
+                        "src": "assets/About/BestGame_HoneyDew.png",
                         "desc": "This is just a fun one.  We wrote a game engine in C++ over the course of the semester, learning about ECS and some game principles along the way.  It culminated in small groups implementing a game on top of their engines.  Ours was called Honeydew Hollow and it involved both top down and side scrolling components, with some pretty decent shader work and even some homemade assets."
                     }
+                ]
+            },
+            "torus": {
+                "Highlights": [
+                    {
+                        "src": "assets/Torus/Reference_pair.png",
+                        "desc": "This shows two entire loops of the torus knot.  Picked out in magenta and cyan respectively are two reference points that correspond to the same point on the edge of the surface at a single angle.  On the printed form, this is enough information to ensure alignment between mating edges."
+                    },
+                    {
+                        "src": "assets/Torus/Connected_Path.png",
+                        "desc": "This represents just the spine of the torus knot.  It illustrates the necessity for division into two segments.  It's the result of early work trying to automate the optimization of sectioning to ensure optimal use of material and maximal print size on a piece (or pieces) of letter paper."
+                    },
+                    {
+                        "src": "assets/Torus/Torus_Knot_1-3.png",
+                        "desc": "This is simply a rendering of the 1-3 torus knot sitting on the surface of a torus.  It defines the centre line of our eventual surface."
+                    },
+                    {
+                        "src": "assets/Torus/Physical_Example.png",
+                        "desc": "This is the best physical example I was able to produce.  It is built from the direct output of the planar_net.py script, cut by hand and stitched together with embroidery thread.  Because I wrote a second script to generate a 3D model in Blender from the same paramters, I was careful to be pretty precise about the lens I used to take the photo, the lighting and the distance from the object.  In the next images, we'll see why."
+                    },
+                    {
+                        "src": "assets/Torus/Holdout.png",
+                        "desc": "This is the mesh my blender script produced.  After carefully positioning and calibrating the camera in the scene to match the photo of the physical object, I was able to use it as a holdout mask/shadow catcher to actually composite the image with further modelled details."
+                    },
+                    {
+                        "src": "assets/Torus/Composite.png",
+                        "desc": "Here's the composite result.  It's certainly not a necessary addition to the project, but it really makes concrete, the accuracy of the math, the pipeline and the physical construction."
+                    },
+                    {
+                        "src": "assets/Torus/2-3_Knot_Narrow_Tacked.JPG",
+                        "desc": "To show a bit of generality, I also produced the resulting manifold from a 2-3 torus knot.  This is an image of it in the early stages of construction.  I had tied the paper into a trefoil knot and tacked it together in a few spots to allow it to relax into its new form."
+                    },
+                    {
+                        "src": "assets/Torus/2-3_Knot_Narrow_Complete.JPG",
+                        "desc": "This is the completed 2-3 torus knot, showcasing the final result of the construction process.  The new stitch pattern is a result of some interesting intrinsic properties of the 2-3 knot.  Namely, the rate of change of curvature is quite extreme, and required a more nuanced stitch pattern to marshal the strip into the correct form.  The stitch itself is the result of several iterative attempts at finding a way to allow even force without unwanted tension."
+                    },
                 ]
             }
         };
@@ -165,153 +199,193 @@
             </nav>
 
             <main id="mainContent">
-        <section id="about">
-            <div class="project-card" data-bg-a="#ffe8d4" data-bg-b="#fff0db" data-bg-base="#fffaf3">
-                <h2>About Me</h2>
-                <p>I'm a recent graduate from Memorial University with a degree in pure mathematics and computer science. Prior to my brief sojourn in academia, I spent 15 years diagnosing and repairing damaged vehicles, and a further year or two in the field of electronics manufacturing.  It's left me with a keen attention to detail and a methodical approach to problem-solving, even when the problem is complex and not fully specified.</p>
-                <div class="links">
-                    <a href="docs/jkirkpatrick_resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
-                    <a href="javascript:void(0)" onclick="launchGallery('accolades', 'Awards')">Academic Recognitions</a>
-                    <a href="javascript:void(0)" onclick="openTrailerModal()">Video Game Trailer</a>
-                </div>
-            </div>
-        </section>
-
-        <h2 id="work-samples" align="center">A Sample of My Work</h2>
-        <section id="projects">
-            <div class="project-card" data-bg-a="#c4c4c4" data-bg-b="#ececec" data-bg-base="#e5e5e5">
-                <h3>1. Build-a-Bot Stadium (BBS)</h3>
-                <img src="assets/BBS/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
-                <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI/ML experiments without being tied
-                    to any particular platform, stack, learning paradigm, or environment type, while being able to keep a persistent record of my iterations.
-                    </p>
-                <p><strong>The Approach:</strong> This was/is an ambitious project, so I tackled it in stages.
-                    <ul>
-                        <li>I considered what I actually needed from the platform and how I wanted to interact with it.</li>
-                        <li>Then worked with modern AI tools to flesh out preliminary engineering documentation, and create a plan of attack.</li>
-                        <li>With a plan in place, and a modicum of direction, I dove into development:
-                            <ul>
-                                <li>Implemented a Go-based server backend to host environments and manage bot instances.</li>
-                                <li>Created a plugin system to allow for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
-                                <li>Designed a custom JSONL-over-TCP protocol for communication between the client and server, allowing for real-time updates and commands.</li>
-                                <li>Created a Go based agent process to simplify communication between the client and server, to make future bot development easier.</li>
-                                <li>Iterated over a few SQLite schemas to store and manage the state of the environments and bot instances.</li>
-                                <li>Developed a front end client interface using C# with Avalonia to have a light and easy interface to control and monitor the action.</li>
-                            </ul>
-                        </li>
-                    </ul>
-                </p>
-                <p><strong>The Current State:</strong> This is early in development, but eerily functional.  As of March 29, 2026, the project is three weeks old, but already showing promise.</p>
-                    <ul>  
-                        <li>The server is happily hosting a simple RL grid world along with an even simpler guess-the-number game and allowing multiple remote bot 
-                            instances to connect and interact with them.</li>  
-                        <li>The client can connect to multiple servers, send commands, and receive real-time updates on the state of the world and the bots.</li>  
-                        <li>The client can host an arbitrary number of bot instances locally and maintain a persistent record of their identities across multiple servers.</li>
-                        <li>The plugin system is in place, allowing for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
-                        <li>There is a stubbed global registration system in place with a UUID-based approach for both clients and servers.</li>
-                        <li>I've taken some time to develop a bit of brand identity for the product.</li>
-                        <li>Lots more as well, but let's focus on the future ... </li>
-                    </ul>
-                <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
-                there's room for a lot of growth.  With careful attention to design and user experience, I think this could be a really powerful tool for learning and experimentation in the AI/ML space.
-                </p>
-                <div class="inline-gallery-shell">
-                    <div class="gallery-heading-row">
-                        <h4>Visual Walkthrough</h4>
-                        <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">Open Full Gallery</a>
-                    </div>
-                    <div class="inline-gallery" data-project="bbs" data-tabs="client,server,concept"></div>
-                </div>
-                <div>
-                    <span class="tech-tag">Go (Golang)</span>
-                    <span class="tech-tag">C# (with Avalonia)</span>  
-                    <span class="tech-tag">JavaScript</span>
-                    <span class="tech-tag">SQLite</span>
-                    <span class="tech-tag">TCP/IP Sockets</span>
-                    <span class="tech-tag">Distributed Systems</span>
-                    <span class="tech-tag">Concurrency</span>
-                </div>
-                <div class="links">
-                    <a href="https://github.com/JonKirkpatrick/bbs">GitHub Repository</a>
-                    <a href="https://github.com/JonKirkpatrick/bbs/blob/main/docs/architecture/ARCHITECTURE.md">Architecture Spec</a>
-                </div>
-            </div>
-
-            <div class="project-card" data-bg-a="#9fe6c9" data-bg-b="#c8ddff" data-bg-base="#f2fff8">
-                <h3>2. Tactile Pattern Classification</h3>
-                <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
-                <p><strong>The Problem:</strong> I was given noisy IMU data from a robotic finger and asked to classify tactile patterns in real time. No fancy sensor suite, no cloud safety net, just "make this work on constrained hardware."</p>
-                <p><strong>The Approach:</strong> I built the full pipeline end to end: model design and training in Python, a custom instruction set architecture (ISA) for the hardware runtime, and scripts to generate all deployment artifacts without hand transcribing model specs or weights.</p>
-                <p><strong>The Current State:</strong> This is still very much a living project, but the core stack works and is reproducible.</p>
-                <ul>
-                    <li>I wrote the ISA myself along with a SystemVerilog parser/translator so one hardware implementation can execute a family of similar CNN models without reflashing for each architecture tweak.</li>
-                    <li>I built a model-spec-driven Python layer that can instantiate compatible Torch models from compact numeric descriptions, so software behavior stays aligned with hardware expectations.</li>
-                    <li>The training flow is now nearly autonomous: data prep, warm-up, compression/quantization stages, artifact export, and plotting can be run from scripts instead of manual notebook choreography.</li>
-                    <li>All hardware deployment artifacts are script-generated: instruction stream, quantized weights, and intermediate IR/metadata. No manual transcription step required.</li>
-                    <li>The small int8 deployable model is about 112k parameters and lands roughly 4% behind a much larger float32 model (~840k params, with a more advanced architecture), which I consider a solid trade for FPGA deployment constraints.</li>
-                </ul>
-                <div class="highlight-grid">
-                    <div class="sub-card">
-                        <h4>From Ambiguity to Architecture</h4>
-                        <p>I started with a <strong>minimalist project brief</strong>, a pile of awkward data, and a lot of uncertainty. I turned that into a working hardware/software co-design flow with a repeatable path from training to FPGA-ready artifacts.</p>
+                <section id="about">
+                    <div class="project-card" data-bg-a="#f9eb9d" data-bg-b="#fdf6d0" data-bg-base="#fffdf5">
+                        <h2>About Me</h2>
+                        <p>I'm a recent graduate from Memorial University with a degree in pure mathematics and computer science. Prior to my brief sojourn in academia, I spent 15 years diagnosing and repairing damaged vehicles, and a further year or two in the field of electronics manufacturing.  It's left me with a keen attention to detail and a methodical approach to problem-solving, even when the problem is complex and not fully specified.</p>
                         <div class="links">
-                            <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
+                            <a href="docs/jkirkpatrick_resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+                            <a href="javascript:void(0)" onclick="launchGallery('accolades', 'Awards')">Academic Recognitions</a>
+                            <a href="javascript:void(0)" onclick="openTrailerModal('assets/About/Project_trailer.mp4')">Video Game Trailer (See recognitions)</a>
                         </div>
-                        <p>
-                            One of the main (self-imposed) constraints was no divide or modulo operations in hardware. That forced better design decisions early and kept the architecture disciplined.
+                    </div>
+                </section>
+
+                <h2 id="work-samples" align="center">A Sample of My Work</h2>
+                <section id="projects">
+                    <div class="project-card" data-bg-a="#9fe6c9" data-bg-b="#c8ddff" data-bg-base="#f2fff8">
+                        <h3>1. Build-a-Bot Stadium (BBS)</h3>
+                        <img src="assets/BBS/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
+                        <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI/ML experiments without being tied
+                            to any particular platform, stack, learning paradigm, or environment type, while being able to keep a persistent record of my iterations.
+                            </p>
+                        <p><strong>The Approach:</strong> This was/is an ambitious project, so I tackled it in stages.
+                            <ul>
+                                <li>I considered what I actually needed from the platform and how I wanted to interact with it.</li>
+                                <li>Then worked with modern AI tools to flesh out preliminary engineering documentation, and create a plan of attack.</li>
+                                <li>With a plan in place, and a modicum of direction, I dove into development:
+                                    <ul>
+                                        <li>Implemented a Go-based server backend to host environments and manage bot instances.</li>
+                                        <li>Created a plugin system to allow for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
+                                        <li>Designed a custom JSONL-over-TCP protocol for communication between the client and server, allowing for real-time updates and commands.</li>
+                                        <li>Created a Go based agent process to simplify communication between the client and server, to make future bot development easier.</li>
+                                        <li>Iterated over a few SQLite schemas to store and manage the state of the environments and bot instances.</li>
+                                        <li>Developed a front end client interface using C# with Avalonia to have a light and easy interface to control and monitor the action.</li>
+                                    </ul>
+                                </li>
+                            </ul>
                         </p>
-                        <p>
-                            I started with a pickled dataset I couldn't even open at first and raw IMU traces I barely understood. The galleries below show the messy path from that point to something approaching deployable.
+                        <p><strong>The Current State:</strong> This is early in development, but eerily functional.  As of March 29, 2026, the project is three weeks old, but already showing promise.</p>
+                            <ul>  
+                                <li>The server is happily hosting a simple RL grid world along with an even simpler guess-the-number game and allowing multiple remote bot 
+                                    instances to connect and interact with them.</li>  
+                                <li>The client can connect to multiple servers, send commands, and receive real-time updates on the state of the world and the bots.</li>  
+                                <li>The client can host an arbitrary number of bot instances locally and maintain a persistent record of their identities across multiple servers.</li>
+                                <li>The plugin system is in place, allowing for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
+                                <li>There is a stubbed global registration system in place with a UUID-based approach for both clients and servers.</li>
+                                <li>I've taken some time to develop a bit of brand identity for the product.</li>
+                                <li>Lots more as well, but let's focus on the future ... </li>
+                            </ul>
+                        <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
+                        there's room for a lot of growth.  With careful attention to design and user experience, I think this could be a really powerful tool for learning and experimentation in the AI/ML space.
                         </p>
+                        <div class="inline-gallery-shell">
+                            <div class="gallery-heading-row">
+                                <h4>Visual Walkthrough</h4>
+                                <a href="javascript:void(0)" onclick="launchGallery('bbs', 'client')">Open Full Gallery</a>
+                            </div>
+                            <div class="inline-gallery" data-project="bbs" data-tabs="client,server,concept"></div>
+                        </div>
+                        <div>
+                            <span class="tech-tag">Go (Golang)</span>
+                            <span class="tech-tag">C# (with Avalonia)</span>  
+                            <span class="tech-tag">JavaScript</span>
+                            <span class="tech-tag">SQLite</span>
+                            <span class="tech-tag">TCP/IP Sockets</span>
+                            <span class="tech-tag">Distributed Systems</span>
+                            <span class="tech-tag">Concurrency</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/JonKirkpatrick/bbs">GitHub Repository</a>
+                            <a href="https://github.com/JonKirkpatrick/bbs/blob/main/docs/architecture/ARCHITECTURE.md">Architecture Spec</a>
+                        </div>
                     </div>
-                    <div class="sub-card doc-panel">
-                        <h4>Documentation</h4>
-                        <p>This is a sort of journal of my thoughts as the project evolved.</p>
-                        <div id="tactileDocLinks" class="doc-links"></div>
+
+                    <div class="project-card" data-bg-a="#ffe8d4" data-bg-b="#fff0db" data-bg-base="#fffaf3">
+                        <h3>2. Tactile Pattern Classification</h3>
+                        <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
+                        <p><strong>The Problem:</strong> I was given noisy IMU data from a robotic finger and asked to classify tactile patterns in real time. No fancy sensor suite, no cloud safety net, just "make this work on constrained hardware."</p>
+                        <p><strong>The Approach:</strong> I built the full pipeline end to end: model design and training in Python, a custom instruction set architecture (ISA) for the hardware runtime, and scripts to generate all deployment artifacts without hand transcribing model specs or weights.</p>
+                        <p><strong>The Current State:</strong> This is still very much a living project, but the core stack works and is reproducible.</p>
+                        <ul>
+                            <li>I wrote the ISA myself along with a SystemVerilog parser/translator so one hardware implementation can execute a family of similar CNN models without reflashing for each architecture tweak.</li>
+                            <li>I built a model-spec-driven Python layer that can instantiate compatible Torch models from compact numeric descriptions, so software behavior stays aligned with hardware expectations.</li>
+                            <li>The training flow is now nearly autonomous: data prep, warm-up, compression/quantization stages, artifact export, and plotting can be run from scripts instead of manual notebook choreography.</li>
+                            <li>All hardware deployment artifacts are script-generated: instruction stream, quantized weights, and intermediate IR/metadata. No manual transcription step required.</li>
+                            <li>The small int8 deployable model is about 112k parameters and lands roughly 4% behind a much larger float32 model (~840k params, with a more advanced architecture), which I consider a solid trade for FPGA deployment constraints.</li>
+                        </ul>
+                        <div class="highlight-grid">
+                            <div class="sub-card">
+                                <h4>From Ambiguity to Architecture</h4>
+                                <p>I started with a <strong>minimalist project brief</strong>, a pile of awkward data, and a lot of uncertainty. I turned that into a working hardware/software co-design flow with a repeatable path from training to FPGA-ready artifacts.</p>
+                                <div class="links">
+                                    <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
+                                </div>
+                                <p>
+                                    One of the main (self-imposed) constraints was no divide or modulo operations in hardware. That forced better design decisions early and kept the architecture disciplined.
+                                </p>
+                                <p>
+                                    I started with a pickled dataset I couldn't even open at first and raw IMU traces I barely understood. The galleries below show the messy path from that point to something approaching deployable.
+                                </p>
+                            </div>
+                            <div class="sub-card doc-panel">
+                                <h4>Documentation</h4>
+                                <p>This is a sort of journal of my thoughts as the project evolved.</p>
+                                <div id="tactileDocLinks" class="doc-links"></div>
+                            </div>
+                        </div>
+                        <div class="inline-gallery-shell">
+                            <div class="gallery-heading-row">
+                                <h4>Software/Hardware Co-Design</h4>
+                                <a href="javascript:void(0)" onclick="launchGallery('tactileHard', 'diagrams')">Open Full Gallery</a>
+                            </div>
+                            <div class="inline-gallery" data-project="tactileHard" data-tabs="diagrams, training"></div>
+                        </div>
+                        <div>
+                            <span class="tech-tag">SystemVerilog</span>
+                            <span class="tech-tag">FPGA Co-Design</span>
+                            <span class="tech-tag">Python (NumPy/SciPy/PyTorch)</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
+                        </div>
                     </div>
-                    <div>
-                        <span class="tech-tag">SystemVerilog</span>
-                        <span class="tech-tag">FPGA Co-Design</span>
-                        <span class="tech-tag">Python (NumPy/SciPy/PyTorch)</span>
+                    <div class="project-card" data-bg-a="#e6d5f0" data-bg-b="#f2e9f7" data-bg-base="#f9f6fb">
+                        <h3>3. Torus Knots and Curvy Plots</h3>
+                        <img src="assets/Torus/Title_Card.png" alt="Torus Logo" class="card-logo">
+                        <p><strong>The Problem:</strong> The initial challenge was to physically construct a particular developable manifold that had somehow lodged itself in my mind; specifically, it was a twisted triangular prism bent into a closed loop. I strongly suspected I could construct it using only flat sheets of paper.  While I achieved a rough approximation through "trial and error", by averaging truncated cones, this model was a little unsatisfying; I lacked the mathematical chops to fully understand what I had constructed.</p>
+                        <p><strong>The Approach:</strong> Using my newly acquired familiarity with differential geometry, numerical analysis and vector calculus, I revisited the problem, starting from its mathematical foundations.  I built out a small set of software tools to solve it numerically for the general case and produced physical objects and 3D models as a sort of constructive proof of validity.</p>
+                        <p><strong>The Current State:</strong> I think I can finally call this case well and truly closed.</p>
+                        <div class="highlight-grid">
+                            <div class="sub-card">
+                                <h4>From Paper to Parameters</h4>
+                                <p>Initially, I was just trying to make something that looked right.  I had a vague idea of the mathematical properties I wanted, but I didn't have the tools to really understand what I was making.  Once I had those tools, I was able to go back and really nail down the properties of the object and produce something that was both mathematically sound and visually appealing.  I reimagined the entire problem from the perspective of kinematics, but instead of using time as a parameter, I replaced it with angle as a more natural parameter.  This let me reduce the problem to one of position, velocity and acceleration of a sort.  As I teased the problem apart from this new perspective, it felt pretty foreign, but the longer I sat with it, the more I was able to build an intuition around the object and its characteristics.</p>
+                                <div class="links">
+                                    <a href="assets/Torus/Differential_Torus_Knots.pdf" target="_blank">A Look at the Mathematics (PDF)</a>
+                                </div>
+                            </div>
+                            <div class="sub-card">
+                                <h4>From Parameters to Python</h4>
+                                <p>Since the mathematical foundation had been laid, I was able to implement the solution in Python, allowing for more efficient computations.  The solution involved integrals with no tidy closed-form, so I had to resort to numerical methods.  Additionally, I wanted to have well defined and accurate stitching guides so I didn't have to just eyeball them on a physical model.  To solve this sticky problem, I employed SciPy's numerical quadrature for the integration and SciPy's BrentQ optimizer to locate where the two sides of the band would meet.  Additionally, going from 3D to 2D, there is often a bit of self intersection.  This required careful handling to ensure the final model was both mathematically accurate and physically realizable.  I employed the LineString class from Shapely to quickly locate the intersections, so I could safely split the planar representation into proper embeddings.</p>
+                                <div class="links">
+                                    <a href="assets/Torus/planar_net.pdf" target="_blank">The Python Version (PDF)</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="inline-gallery-shell">
+                            <div class="gallery-heading-row">
+                                <h4>The Physical Manifestation of the Solution</h4>
+                                <a href="javascript:void(0)" onclick="launchGallery('torus', 'Highlights')">Open Full Gallery</a>
+                            </div>
+                            <div class="inline-gallery" data-project="torus" data-tabs="Highlights"></div>
+                        </div>
+                        <div>
+                            <span class="tech-tag">Python (SciPy/Shapely)</span>
+                            <span class="tech-tag">Blender</span>
+                            <span class="tech-tag">Math</span>
+                        </div>
+                        <div class="links">
+                            <a href="https://github.com/JonKirkpatrick/Umbilic-Torus-Highlights">GitHub Repository</a>
+                            <a href="javascript:void(0)" onclick="openTrailerModal({
+                            src: 'assets/Torus/Why_Knot.mkv',
+                            title: 'Looping the Loop: Why Knot?',
+                            description: 'There was pretty much no need for this to be made.  But it does kind of remind me of old screensavers and I just had to keep poking at this project even after it was done.',
+                            linkLabel: 'Open Video File',
+                            loop: true
+                            })">Animated Torus Knot Manifold</a>
+                        </div>
                     </div>
-                    <div class="links">
-                        <a href="https://github.com/JonKirkpatrick/tactile-classification">GitHub Repository</a>
-                    </div>
-                </div>
-                <div class="inline-gallery-shell">
-                    <div class="gallery-heading-row">
-                        <h4>Hardware Snapshots</h4>
-                        <a href="javascript:void(0)" onclick="launchGallery('tactileHard', 'diagrams')">Open Full Gallery</a>
-                    </div>
-                    <div class="inline-gallery" data-project="tactileHard" data-tabs="diagrams"></div>
-                </div>
-                <div class="inline-gallery-shell">
-                    <div class="gallery-heading-row">
-                        <h4>Training Outputs</h4>
-                        <a href="javascript:void(0)" onclick="launchGallery('tactilePython', 'training')">Open Full Gallery</a>
-                    </div>
-                    <div class="inline-gallery" data-project="tactilePython" data-tabs="training"></div>
-                </div>
-            </div>
-        </section>
+                </section>
             </main>
         </div>
         
         <div id="galleryOverlay" class="modal">
             <span class="close-btn" onclick="closeGallery()">&times;</span>
             <div class="modal-content">
-                <div class="tab-bar"></div>
-                <div class="gallery-controls">
-                    <button onclick="changeImage(-1)">&#10094; Prev</button>
-                    <span id="imageCounter"></span>
-                    <button onclick="changeImage(1)">Next &#10095;</button>
-                </div>
-                
-                <p id="imageCaption"></p>
-                
-                <img id="mainGalleryImage" src="" alt="Gallery View">
+                <div class="project-card gallery-modal-card">
+                    <div class="tab-bar"></div>
+                    <div class="gallery-controls">
+                        <button onclick="changeImage(-1)">&#10094; Prev</button>
+                        <span id="imageCounter"></span>
+                        <button onclick="changeImage(1)">Next &#10095;</button>
+                    </div>
 
-                <iframe id="pdfViewer" src=""></iframe>
+                    <p id="imageCaption"></p>
+
+                    <img id="mainGalleryImage" src="" alt="Gallery View">
+
+                    <iframe id="pdfViewer" src=""></iframe>
+                </div>
             </div>
         </div>
 
@@ -319,16 +393,16 @@
             <span class="close-btn" onclick="closeTrailerModal()">&times;</span>
             <div class="modal-content trailer-modal-content" onclick="event.stopPropagation()">
                 <div class="project-card trailer-modal-card" data-bg-a="#dcecff" data-bg-b="#edf6ff" data-bg-base="#f8fbff">
-                    <h2>Video Game Trailer</h2>
-                    <p>This is the trailer for the game I mentioned in the "Academic Recognitions" section. It's the culmination of a semester of collaborative work, building much of the engine itself across mini-projects.  The game is really just a test drive of the engine and an opportunity to showcase the capabilities of the system and be a little playful as well.</p>
+                    <h2 id="trailerModalTitle">Video Game Trailer</h2>
+                    <p id="trailerModalDescription">This is the trailer for the game I mentioned in the "Academic Recognitions" section. It's the culmination of a semester of collaborative work, building much of the engine itself across mini-projects.  The game is really just a test drive of the engine and an opportunity to showcase the capabilities of the system and be a little playful as well.</p>
                     <div class="trailer-shell">
                         <video id="trailerVideo" class="trailer-video" controls preload="metadata" playsinline>
-                            <source src="assets/About/Project_trailer.mp4" type="video/mp4">
+                            <source id="trailerSource" src="assets/About/Project_trailer.mp4" type="video/mp4">
                             Sorry, your browser does not support embedded video.
                         </video>
                     </div>
                     <div class="links">
-                        <a href="assets/About/Project_trailer.mp4" target="_blank" rel="noopener noreferrer">Open MP4</a>
+                        <a id="trailerModalLink" href="assets/About/Project_trailer.mp4" target="_blank" rel="noopener noreferrer">Open MP4</a>
                     </div>
                 </div>
             </div>

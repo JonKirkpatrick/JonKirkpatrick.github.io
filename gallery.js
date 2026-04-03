@@ -12,6 +12,54 @@ let defaultBgAccentA = '';
 let defaultBgAccentB = '';
 let defaultBgBase = '';
 let trailerOverlayOpen = false;
+let trailerModalDefaultsCache = null;
+
+function getTrailerModalDefaults() {
+    const trailerSource = document.getElementById('trailerSource');
+    const trailerVideo = document.getElementById('trailerVideo');
+    const trailerTitle = document.getElementById('trailerModalTitle');
+    const trailerDescription = document.getElementById('trailerModalDescription');
+    const trailerLink = document.getElementById('trailerModalLink');
+
+    if (trailerModalDefaultsCache) {
+        return trailerModalDefaultsCache;
+    }
+
+    trailerModalDefaultsCache = {
+        src: trailerSource?.getAttribute('src') || '',
+        title: trailerTitle?.innerText || 'Video',
+        description: trailerDescription?.innerText || '',
+        linkLabel: trailerLink?.innerText || 'Open MP4',
+        loop: Boolean(trailerVideo?.loop)
+    };
+
+    return trailerModalDefaultsCache;
+}
+
+function normalizeTrailerModalConfig(videoOrConfig, titleText, descriptionText, loopFlag) {
+    const defaults = getTrailerModalDefaults();
+
+    if (typeof videoOrConfig === 'object' && videoOrConfig !== null) {
+        return {
+            ...defaults,
+            ...videoOrConfig,
+            src: videoOrConfig.src || defaults.src,
+            loop: typeof videoOrConfig.loop === 'boolean' ? videoOrConfig.loop : defaults.loop
+        };
+    }
+
+    if (typeof videoOrConfig === 'string' && videoOrConfig.trim().length > 0) {
+        return {
+            ...defaults,
+            src: videoOrConfig,
+            title: titleText || defaults.title,
+            description: descriptionText || defaults.description,
+            loop: typeof loopFlag === 'boolean' ? loopFlag : defaults.loop
+        };
+    }
+
+    return defaults;
+}
 
 function openGallery(projectData, defaultTab) {
     currentGalleryData = projectData;
@@ -105,20 +153,39 @@ function closeGallery() {
     document.getElementById("galleryOverlay").style.display = "none";
 }
 
-function openTrailerModal() {
+function openTrailerModal(videoOrConfig, titleText, descriptionText, loopFlag) {
     const trailerOverlay = document.getElementById('trailerOverlay');
     const trailerVideo = document.getElementById('trailerVideo');
+    const trailerSource = document.getElementById('trailerSource');
+    const trailerTitle = document.getElementById('trailerModalTitle');
+    const trailerDescription = document.getElementById('trailerModalDescription');
+    const trailerLink = document.getElementById('trailerModalLink');
 
     if (!trailerOverlay) return;
+
+    const config = normalizeTrailerModalConfig(videoOrConfig, titleText, descriptionText, loopFlag);
+    if (!config.src || !trailerVideo || !trailerSource) return;
+
+    if (trailerTitle) trailerTitle.innerText = config.title;
+    if (trailerDescription) trailerDescription.innerText = config.description;
+    if (trailerLink) {
+        trailerLink.href = config.src;
+        trailerLink.innerText = config.linkLabel || 'Open MP4';
+    }
+    trailerVideo.loop = Boolean(config.loop);
+
+    const currentSrc = trailerSource.getAttribute('src');
+    if (currentSrc !== config.src) {
+        trailerSource.setAttribute('src', config.src);
+        trailerVideo.load();
+    }
 
     trailerOverlay.style.display = 'block';
     trailerOverlayOpen = true;
     document.body.classList.add('modal-open');
 
-    if (trailerVideo) {
-        trailerVideo.currentTime = 0;
-        trailerVideo.play().catch(() => {});
-    }
+    trailerVideo.currentTime = 0;
+    trailerVideo.play().catch(() => {});
 }
 
 function closeTrailerModal() {
@@ -374,8 +441,9 @@ function buildTableOfContents() {
 
 function syncTocVerticalAnchor() {
     const toc = document.getElementById('tocNav');
-    const firstCard = document.querySelector('#projects .project-card');
-    if (!toc || !firstCard) return;
+    const aboutCard = document.querySelector('#about .project-card');
+    const anchorCard = aboutCard || document.querySelector('#projects .project-card');
+    if (!toc || !anchorCard) return;
 
     const isWide = window.matchMedia('(min-width: 1841px)').matches;
     if (!isWide) {
@@ -383,8 +451,8 @@ function syncTocVerticalAnchor() {
         return;
     }
 
-    // Align fixed TOC with where the first card sits when the page is at scroll top.
-    const cardDocumentTop = firstCard.getBoundingClientRect().top + window.scrollY;
+    // Align fixed TOC with where the About card sits when the page is at scroll top.
+    const cardDocumentTop = anchorCard.getBoundingClientRect().top + window.scrollY;
     const anchoredTop = Math.max(16, Math.round(cardDocumentTop));
     toc.style.top = `${anchoredTop}px`;
 }
