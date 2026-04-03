@@ -246,6 +246,25 @@ function renderInlineGallery(galleryNode) {
     const featuredCaption = document.createElement('p');
     featuredCaption.className = 'featured-caption';
 
+    const navRow = document.createElement('div');
+    navRow.className = 'inline-gallery-nav';
+
+    const prevBtn = document.createElement('button');
+    prevBtn.type = 'button';
+    prevBtn.className = 'inline-gallery-btn';
+    prevBtn.innerText = 'Prev';
+    prevBtn.setAttribute('aria-label', `Previous ${projectKey} image`);
+
+    const counter = document.createElement('span');
+    counter.className = 'inline-gallery-counter';
+    counter.setAttribute('aria-live', 'polite');
+
+    const nextBtn = document.createElement('button');
+    nextBtn.type = 'button';
+    nextBtn.className = 'inline-gallery-btn';
+    nextBtn.innerText = 'Next';
+    nextBtn.setAttribute('aria-label', `Next ${projectKey} image`);
+
     const thumbs = document.createElement('div');
     thumbs.className = 'thumb-strip';
 
@@ -254,10 +273,16 @@ function renderInlineGallery(galleryNode) {
         featuredImg.src = item.src;
         featuredCaption.innerText = item.desc || '';
         featuredImg.onclick = () => openImageLightbox(item.src, item.desc || '');
+        counter.innerText = `${index + 1} / ${items.length}`;
 
         thumbs.querySelectorAll('button').forEach((btn, idx) => {
             btn.classList.toggle('active', idx === index);
         });
+    }
+
+    function stepInlineGallery(step) {
+        activeIndex = (activeIndex + step + items.length) % items.length;
+        renderFeatured(activeIndex);
     }
 
     items.forEach((item, idx) => {
@@ -282,8 +307,29 @@ function renderInlineGallery(galleryNode) {
     featured.appendChild(featuredImg);
     featured.appendChild(featuredCaption);
 
+    navRow.appendChild(prevBtn);
+    navRow.appendChild(counter);
+    navRow.appendChild(nextBtn);
+
+    prevBtn.onclick = () => stepInlineGallery(-1);
+    nextBtn.onclick = () => stepInlineGallery(1);
+
+    galleryNode.tabIndex = 0;
+    galleryNode.addEventListener('keydown', (event) => {
+        if (event.key === 'ArrowLeft') {
+            event.preventDefault();
+            stepInlineGallery(-1);
+        }
+
+        if (event.key === 'ArrowRight') {
+            event.preventDefault();
+            stepInlineGallery(1);
+        }
+    });
+
     galleryNode.innerHTML = '';
     galleryNode.appendChild(featured);
+    galleryNode.appendChild(navRow);
     galleryNode.appendChild(thumbs);
 
     renderFeatured(activeIndex);
@@ -383,10 +429,6 @@ function updateTocActiveByScroll() {
     }
 
     setActiveTocLink(activeHeading.id);
-
-    // Background gradient follows the same active heading: find its parent card and apply its colors
-    const activeCard = activeHeading.closest('.project-card');
-    applyBackgroundFromCard(activeCard);
 }
 
 function requestTocActiveUpdate() {
@@ -458,12 +500,6 @@ function syncTocVerticalAnchor() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
-    const rootStyles = window.getComputedStyle(document.documentElement);
-    defaultBgAccentA = rootStyles.getPropertyValue('--bg-accent-a').trim() || '#ffe8d4';
-    defaultBgAccentB = rootStyles.getPropertyValue('--bg-accent-b').trim() || '#fff0db';
-    defaultBgBase = rootStyles.getPropertyValue('--bg').trim() || '#fffaf3';
-    projectCards = Array.from(document.querySelectorAll('#projects .project-card'));
-
     document.querySelectorAll('.inline-gallery').forEach(renderInlineGallery);
     renderDocLinks('tactileDocLinks', 'tactileSoft', 'documentation');
     buildTableOfContents();

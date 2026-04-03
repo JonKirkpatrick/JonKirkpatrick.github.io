@@ -9,6 +9,12 @@
     --bg-accent-b: #fdf6d0;
 }
 
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
 body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; 
     line-height: 1.6; 
     max-width: 100%; 
@@ -65,6 +71,43 @@ header {
 
 .header-contact-links a:hover {
     color: var(--brand);
+}
+
+.quick-nav {
+    margin-top: 14px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.quick-link {
+    width: 36px;
+    height: 36px;
+    border-radius: 999px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: #2f4156;
+    background: #fff;
+    border: 1px solid #d6dfe9;
+    box-shadow: 0 4px 10px rgba(23, 33, 45, 0.08);
+    transition: transform 120ms ease, color 120ms ease, border-color 120ms ease;
+}
+
+.quick-link:hover {
+    transform: translateY(-1px);
+    color: var(--brand);
+    border-color: #e2b596;
+}
+
+.quick-link svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
 }
 
 .header-image {
@@ -194,7 +237,7 @@ h3 {
 }
 
 .site-footer {
-    max-width: 1180px;
+    width: min(1180px, 100%);
     margin: 34px auto 20px;
     padding: 18px 20px;
     border: 1px solid #dce4ee;
@@ -253,6 +296,96 @@ h3 {
 .project-card h2 {
     margin-top: 0;
     color: var(--brand);
+}
+
+.about-card {
+    padding-top: 22px;
+}
+
+.about-card summary {
+    list-style: none;
+    cursor: pointer;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--brand);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-card summary::-webkit-details-marker {
+    display: none;
+}
+
+.about-card summary::after {
+    content: '+';
+    font-size: 1.4rem;
+    color: #566575;
+    line-height: 1;
+}
+
+.about-card[open] summary::after {
+    content: '-';
+}
+
+.about-card-content {
+    margin-top: 14px;
+    border-top: 1px solid #e2e7ed;
+    padding-top: 14px;
+}
+
+.about-toolkit-card {
+    margin-top: 12px;
+}
+
+.about-toolkit-card h4 {
+    margin: 0 0 8px;
+    color: #22344d;
+}
+
+.about-toolkit-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+}
+
+.impact-list {
+    margin: 10px 0 0;
+    padding-left: 20px;
+}
+
+.impact-list li {
+    margin-bottom: 6px;
+}
+
+.project-details {
+    margin-top: 12px;
+    border: 1px solid #e2e7ed;
+    border-radius: 10px;
+    background: #f9fbfd;
+}
+
+.project-details summary {
+    cursor: pointer;
+    padding: 10px 12px;
+    font-weight: 700;
+    color: #33485e;
+}
+
+.project-details[open] summary {
+    border-bottom: 1px solid #e2e7ed;
+}
+
+.details-content {
+    padding: 10px 12px 12px;
+}
+
+.details-content p {
+    margin: 0 0 8px;
+}
+
+.details-content p:last-child {
+    margin-bottom: 0;
 }
 
 .card-logo {
@@ -388,6 +521,36 @@ h3 {
     font-size: 0.95rem;
     color: #2f3a44;
     border-top: 1px solid #e6e9ee;
+}
+
+.inline-gallery-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    background: #ffffff;
+    border: 1px solid #e1e7ef;
+    border-radius: 10px;
+    padding: 8px 10px;
+}
+
+.inline-gallery-btn {
+    border: 1px solid var(--brand);
+    background: #fff;
+    color: var(--brand);
+    border-radius: 8px;
+    padding: 6px 12px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.inline-gallery-btn:hover {
+    background: #fff4ea;
+}
+
+.inline-gallery-counter {
+    font-weight: 700;
+    color: #374658;
 }
 
 .thumb-strip {
@@ -554,6 +717,14 @@ h3 {
         grid-auto-columns: minmax(86px, 1fr);
         overflow-x: auto;
         padding-bottom: 4px;
+    }
+
+    .inline-gallery-nav {
+        gap: 8px;
+    }
+
+    .inline-gallery-btn {
+        padding: 7px 10px;
     }
 
     .links {

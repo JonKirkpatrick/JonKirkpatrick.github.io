@@ -5,10 +5,10 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Jon Kirkpatrick</title>
-        <link rel="stylesheet" href="style.css?v=1.2">
+        <link rel="stylesheet" href="style.css?v=1.3">
     </head>
 
-    <script src="gallery.js?v=1.2"></script>
+    <script src="gallery.js?v=1.3"></script>
 
     <script>
         window.allProjectData = {
@@ -68,23 +68,23 @@
                 "documentation": [
                     {
                         "src": "docs/CNN/DataPrep.pdf",
-                        "desc": "The Trouble With Pickles:  A brief intro to my initial struggles with the dataset and how I ended up with something I could actually work with."
+                        "desc": "The Trouble With Pickles"
                     },
                     {
                         "src": "docs/CNN/ModelExploration.pdf",
-                        "desc": "Architecture Search by GA:  This never quite made it to the final cut, but initially I had been using a GA to iterate through a large space of potential model architectures.  I think I still have the scripts I used to run the GA, so if you're interested in that process I can share them as well."
+                        "desc": "Architecture Search by GA"
                     },
                     {
                         "src": "docs/CNN/ModelRefinement.pdf",
-                        "desc": "Split-Model Quantization:  Lamentably, this is slightly vestigial too.  I've moved on quite a bit from this approach, but it was the initial inspiration for the quantization you'll find in the repo."
+                        "desc": "Split-Model Quantization"
                     },
                     {
                         "src": "docs/CNN/ModelDeployment.pdf",
-                        "desc": "I call it the Ouroboros Core:  When I realized that every single layer was essentially the same operation with maybe a transposition or some minor change to the interpretation, I realized I could just let a single module keep eating its own output.  The models essentially just 'time-multiplex'?"
+                        "desc": "I call it the Ouroboros Core"
                     },
                     {
                         "src": "docs/CNN/CNN_By_Hand.pdf",
-                        "desc": "By Hand:  Honestly, I don't think there are a lot of people who can say they've done this.  I dramatically simplified a model and its bitwidth, to actually calculate a whole forward pass by hand.  I wouldn't have been able to arrive at the simplification above without first wrestling with the math."
+                        "desc": "By Hand"
                     }
                 ]
             },
@@ -190,10 +190,37 @@
                 <h1>Jon Kirkpatrick</h1>
                 <div class="tagline">Aspiring AI Engineer</div>
                 <p>Based in St. John's, NL. and ready to take on new challenges!</p>
-                <div class="header-contact-links">
-                    <a href="mailto:jon.kirkpatrick@pm.me">jon.kirkpatrick@pm.me</a>
-                    <a href="https://github.com/JonKirkpatrick" target="_blank" rel="noopener noreferrer">GitHub Profile</a>
-                </div>
+                <nav class="quick-nav" aria-label="Quick links">
+                    <a class="quick-link" href="#about" title="About Me" aria-label="About Me">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <circle cx="12" cy="8" r="3"></circle>
+                            <path d="M5 19c1.8-3.2 4.3-4.8 7-4.8S17.2 15.8 19 19"></path>
+                        </svg>
+                    </a>
+                    <a class="quick-link" href="#work-samples" title="Selected Projects" aria-label="Selected Projects">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <rect x="4" y="5" width="16" height="14" rx="2"></rect>
+                            <path d="M8 3v4M16 3v4M4 10h16"></path>
+                        </svg>
+                    </a>
+                    <a class="quick-link" href="docs/jkirkpatrick_resume.pdf" target="_blank" rel="noopener noreferrer" title="Resume" aria-label="Resume">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M7 3h8l4 4v14H7z"></path>
+                            <path d="M15 3v4h4M10 12h6M10 16h6M10 8h3"></path>
+                        </svg>
+                    </a>
+                    <a class="quick-link" href="https://github.com/JonKirkpatrick" target="_blank" rel="noopener noreferrer" title="GitHub" aria-label="GitHub">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <path d="M12 3.5a8.5 8.5 0 0 0-2.7 16.6c.4.1.5-.2.5-.4v-1.5c-2.2.5-2.7-.9-2.7-.9-.4-.9-.9-1.2-.9-1.2-.7-.5.1-.5.1-.5.8.1 1.2.8 1.2.8.7 1.1 1.8.8 2.2.6.1-.5.3-.8.5-1-1.8-.2-3.7-.9-3.7-4 0-.9.3-1.7.8-2.3-.1-.2-.4-1 .1-2.2 0 0 .7-.2 2.4.9a8.3 8.3 0 0 1 4.3 0c1.6-1.1 2.4-.9 2.4-.9.5 1.2.2 2 .1 2.2.5.6.8 1.4.8 2.3 0 3.1-1.9 3.8-3.7 4 .3.2.6.8.6 1.5v2.2c0 .2.1.5.5.4A8.5 8.5 0 0 0 12 3.5z"></path>
+                        </svg>
+                    </a>
+                    <a class="quick-link" href="mailto:jon.kirkpatrick@pm.me" title="Email" aria-label="Email">
+                        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+                            <rect x="3" y="5" width="18" height="14" rx="2"></rect>
+                            <path d="M4 7l8 6 8-6"></path>
+                        </svg>
+                    </a>
+                </nav>
             </div>
         </header>
         <div class="page-shell">
@@ -204,55 +231,59 @@
 
             <main id="mainContent">
                 <section id="about">
-                    <div class="project-card" data-bg-a="#f9eb9d" data-bg-b="#fdf6d0" data-bg-base="#fffdf5">
-                        <h2>About Me</h2>
-                        <p>I'm a recent graduate from Memorial University with a degree in pure mathematics and computer science. Prior to my brief sojourn in academia, I spent 15 years diagnosing and repairing damaged vehicles, and a further year or two in the field of electronics manufacturing.  It's left me with a keen attention to detail and a methodical approach to problem-solving, even when the problem is complex and not fully specified.</p>
-                        <div class="links">
-                            <a href="docs/jkirkpatrick_resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
-                            <a href="javascript:void(0)" onclick="launchGallery('accolades', 'Awards')">Academic Recognitions</a>
-                            <a href="javascript:void(0)" onclick="openTrailerModal('assets/About/Project_trailer.mp4')">Video Game Trailer (See recognitions)</a>
+                    <details class="project-card about-card" data-bg-a="#f9eb9d" data-bg-b="#fdf6d0" data-bg-base="#fffdf5">
+                        <summary>About Me</summary>
+                        <div class="about-card-content">
+                            <p>I'm a recent graduate from Memorial University with a degree in pure mathematics and computer science. Prior to my brief sojourn in academia, I spent 15 years diagnosing and repairing damaged vehicles, and a further year or two in the field of electronics manufacturing.  It's left me with a keen attention to detail and a methodical approach to problem-solving, even when the problem is complex and not fully specified.</p>
+                            <div class="sub-card about-toolkit-card">
+                                <h4>Technical Toolkit</h4>
+                                <p>Across the projects in this portfolio, I have worked with the following technologies:</p>
+                                <div class="about-toolkit-tags">
+                                    <span class="tech-tag">Go</span>
+                                    <span class="tech-tag">C# / Avalonia</span>
+                                    <span class="tech-tag">JavaScript</span>
+                                    <span class="tech-tag">Python</span>
+                                    <span class="tech-tag">SciPy / PyTorch / NumPy / Pandas</span>
+                                    <span class="tech-tag">SQLite</span>
+                                    <span class="tech-tag">SystemVerilog</span>
+                                </div>
+                                <p><strong>AI-assisted engineering:</strong> I use tools such as GitHub Copilot to accelerate planning, implementation, and refactoring, with verification through tests, manual review, and iteration.</p>
+                                <h4>Other Notable Tools</h4>
+                                <div class="about-toolkit-tags">
+                                    <span class="tech-tag">C++</span>
+                                    <span class="tech-tag">Java</span>
+                                </div>
+                            </div>
+                            <div class="links">
+                                <a href="docs/jkirkpatrick_resume.pdf" target="_blank" rel="noopener noreferrer">Resume (PDF)</a>
+                                <a href="javascript:void(0)" onclick="launchGallery('accolades', 'Awards')">Academic Recognitions</a>
+                                <a href="javascript:void(0)" onclick="openTrailerModal('assets/About/Project_trailer.mp4')">Video Game Trailer (See recognitions)</a>
+                            </div>
                         </div>
-                    </div>
+                    </details>
                 </section>
 
-                <h2 id="work-samples" align="center">A Sample of My Work</h2>
+                <h2 id="work-samples" align="center">Selected Projects</h2>
                 <section id="projects">
                     <div class="project-card" data-bg-a="#9fe6c9" data-bg-b="#c8ddff" data-bg-base="#f2fff8">
                         <h3>1. Build-a-Bot Stadium (BBS)</h3>
                         <img src="assets/BBS/BBS_Logo_Concept_Small.png" alt="BBS Logo" class="card-logo">
-                        <p><strong>The Problem:</strong> I wanted a flexible platform to allow quick iteration on AI/ML experiments without being tied
-                            to any particular platform, stack, learning paradigm, or environment type, while being able to keep a persistent record of my iterations.
-                            </p>
-                        <p><strong>The Approach:</strong> This was/is an ambitious project, so I tackled it in stages.
-                            <ul>
-                                <li>I considered what I actually needed from the platform and how I wanted to interact with it.</li>
-                                <li>Then worked with modern AI tools to flesh out preliminary engineering documentation, and create a plan of attack.</li>
-                                <li>With a plan in place, and a modicum of direction, I dove into development:
-                                    <ul>
-                                        <li>Implemented a Go-based server backend to host environments and manage bot instances.</li>
-                                        <li>Created a plugin system to allow for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
-                                        <li>Designed a custom JSONL-over-TCP protocol for communication between the client and server, allowing for real-time updates and commands.</li>
-                                        <li>Created a Go based agent process to simplify communication between the client and server, to make future bot development easier.</li>
-                                        <li>Iterated over a few SQLite schemas to store and manage the state of the environments and bot instances.</li>
-                                        <li>Developed a front end client interface using C# with Avalonia to have a light and easy interface to control and monitor the action.</li>
-                                    </ul>
-                                </li>
-                            </ul>
-                        </p>
-                        <p><strong>The Current State:</strong> This is early in development, but eerily functional.  As of March 29, 2026, the project is three weeks old, but already showing promise.</p>
-                            <ul>  
-                                <li>The server is happily hosting a simple RL grid world along with an even simpler guess-the-number game and allowing multiple remote bot 
-                                    instances to connect and interact with them.</li>  
-                                <li>The client can connect to multiple servers, send commands, and receive real-time updates on the state of the world and the bots.</li>  
-                                <li>The client can host an arbitrary number of bot instances locally and maintain a persistent record of their identities across multiple servers.</li>
-                                <li>The plugin system is in place, allowing for easy extension of the server's capabilities without modifying the codebase or recompiling.</li>
-                                <li>There is a stubbed global registration system in place with a UUID-based approach for both clients and servers.</li>
-                                <li>I've taken some time to develop a bit of brand identity for the product.</li>
-                                <li>Lots more as well, but let's focus on the future ... </li>
-                            </ul>
-                        <p><strong>Where It Goes From Here:</strong> There's a long uphill climb ahead, but the foundation is solid and the potential is exciting.  Since I've kept everything as flexible and unopinionated as possible, 
-                        there's room for a lot of growth.  With careful attention to design and user experience, I think this could be a really powerful tool for learning and experimentation in the AI/ML space.
-                        </p>
+                        <p><strong>Problem:</strong> I wanted one platform to run AI/ML experiments across multiple environments without rebuilding tooling every time.</p>
+                        <p><strong>Solution:</strong> I built a modular client/server system with a plugin architecture, persistent state, and a lightweight protocol for real-time control.</p>
+                        <ul class="impact-list">
+                            <li>Go server hosts multiple environments and remote bot sessions.</li>
+                            <li>C# Avalonia client manages multiple servers and bot instances.</li>
+                            <li>JSONL-over-TCP protocol supports command and state streaming.</li>
+                            <li>Plugin model keeps the core platform flexible and extensible.</li>
+                        </ul>
+                        <details class="project-details">
+                            <summary>Details</summary>
+                            <div class="details-content">
+                                <p>I used modern AI tooling to accelerate planning, documentation drafts, and architecture iteration before implementation.</p>
+                                <p>This is still early-stage, but the foundation is already functional: persistent identities, environment hosting, client orchestration, and extensible server capabilities are in place.</p>
+                                <p>The long-term goal is a general-purpose AI experimentation arena that remains stack-agnostic and easy to extend.</p>
+                            </div>
+                        </details>
                         <div class="inline-gallery-shell">
                             <div class="gallery-heading-row">
                                 <h4>Visual Walkthrough</h4>
@@ -278,33 +309,33 @@
                     <div class="project-card" data-bg-a="#ffe8d4" data-bg-b="#fff0db" data-bg-base="#fffaf3">
                         <h3>2. Tactile Pattern Classification</h3>
                         <img src="assets/CNN/Tactile_Small.png" alt="CNN Logo" class="card-logo">
-                        <p><strong>The Problem:</strong> I was given noisy IMU data from a robotic finger and asked to classify tactile patterns in real time. No fancy sensor suite, no cloud safety net, just "make this work on constrained hardware."</p>
-                        <p><strong>The Approach:</strong> I built the full pipeline end to end: model design and training in Python, a custom instruction set architecture (ISA) for the hardware runtime, and scripts to generate all deployment artifacts without hand transcribing model specs or weights.</p>
-                        <p><strong>The Current State:</strong> This is still very much a living project, but the core stack works and is reproducible.</p>
-                        <ul>
-                            <li>I wrote the ISA myself along with a SystemVerilog parser/translator so one hardware implementation can execute a family of similar CNN models without reflashing for each architecture tweak.</li>
-                            <li>I built a model-spec-driven Python layer that can instantiate compatible Torch models from compact numeric descriptions, so software behavior stays aligned with hardware expectations.</li>
-                            <li>The training flow is now nearly autonomous: data prep, warm-up, compression/quantization stages, artifact export, and plotting can be run from scripts instead of manual notebook choreography.</li>
-                            <li>All hardware deployment artifacts are script-generated: instruction stream, quantized weights, and intermediate IR/metadata. No manual transcription step required.</li>
-                            <li>The small int8 deployable model is about 112k parameters and lands roughly 4% behind a much larger float32 model (~840k params, with a more advanced architecture), which I consider a solid trade for FPGA deployment constraints.</li>
+                        <p><strong>Problem:</strong> Classify noisy robotic IMU tactile data in real time on constrained hardware.</p>
+                        <p><strong>Solution:</strong> I built a full software/hardware co-design pipeline, from model training to FPGA-ready deployment artifacts.</p>
+                        <ul class="impact-list">
+                            <li>Custom ISA plus SystemVerilog parser/translator for reusable hardware execution.</li>
+                            <li>Model-spec-driven Python layer keeps model definitions aligned with hardware constraints.</li>
+                            <li>Automated training and export flow reduces manual handoff risk.</li>
+                            <li>Deployable int8 model (~112k params) lands within about 4% of a much larger float32 baseline.</li>
                         </ul>
+                        <details class="project-details">
+                            <summary>Details</summary>
+                            <div class="details-content">
+                                <p>I started from a minimal brief and difficult data, then built a repeatable path from data prep to artifact generation.</p>
+                                <p>A key design constraint was avoiding divide and modulo operations in hardware, which forced a cleaner architecture and tighter implementation discipline.</p>
+                            </div>
+                        </details>
                         <div class="highlight-grid">
                             <div class="sub-card">
                                 <h4>From Ambiguity to Architecture</h4>
-                                <p>I started with a <strong>minimalist project brief</strong>, a pile of awkward data, and a lot of uncertainty. I turned that into a working hardware/software co-design flow with a repeatable path from training to FPGA-ready artifacts.</p>
+                                <p>Started from a minimalist brief and unclear data, and turned it into a reproducible co-design workflow from training to deployment.</p>
                                 <div class="links">
                                     <a href="docs/Project_Brief.pdf" target="_blank">View Original Brief (PDF)</a>
                                 </div>
-                                <p>
-                                    One of the main (self-imposed) constraints was no divide or modulo operations in hardware. That forced better design decisions early and kept the architecture disciplined.
-                                </p>
-                                <p>
-                                    I started with a pickled dataset I couldn't even open at first and raw IMU traces I barely understood. The galleries below show the messy path from that point to something approaching deployable.
-                                </p>
+                                <p>Constraint-led engineering shaped the architecture early and helped keep deployment realistic.</p>
                             </div>
                             <div class="sub-card doc-panel">
                                 <h4>Documentation</h4>
-                                <p>This is a sort of journal of my thoughts as the project evolved.</p>
+                                <p>This is a journal of my thoughts as the project evolved.</p>
                                 <div id="tactileDocLinks" class="doc-links"></div>
                             </div>
                         </div>
@@ -327,20 +358,32 @@
                     <div class="project-card" data-bg-a="#e6d5f0" data-bg-b="#f2e9f7" data-bg-base="#f9f6fb">
                         <h3>3. Torus Knots and Curvy Plots</h3>
                         <img src="assets/Torus/Title_Card.png" alt="Torus Logo" class="card-logo">
-                        <p><strong>The Problem:</strong> The initial challenge was to physically construct a particular developable manifold that had somehow lodged itself in my mind; specifically, it was a twisted triangular prism bent into a closed loop. I strongly suspected I could construct it using only flat sheets of paper.  While I achieved a rough approximation through "trial and error", by averaging truncated cones, this model was a little unsatisfying; I lacked the mathematical chops to fully understand what I had constructed.</p>
-                        <p><strong>The Approach:</strong> Using my newly acquired familiarity with differential geometry, numerical analysis and vector calculus, I revisited the problem, starting from its mathematical foundations.  I built out a small set of software tools to solve it numerically for the general case and produced physical objects and 3D models as a sort of constructive proof of validity.</p>
-                        <p><strong>The Current State:</strong> I think I can finally call this case well and truly closed.</p>
+                        <p><strong>Problem:</strong> Build a physically realizable developable manifold from flat material and verify the geometry rigorously.</p>
+                        <p><strong>Solution:</strong> I reframed the shape mathematically, solved it numerically, and validated it with both physical builds and 3D renders.</p>
+                        <ul class="impact-list">
+                            <li>Derived a general numerical workflow for torus-knot-based manifold construction.</li>
+                            <li>Used SciPy and Shapely to handle integration, root finding, and intersection logic.</li>
+                            <li>Produced stitch guides, physical prototypes, and rendered verification artifacts.</li>
+                            <li>Closed the loop between intuition, proof, and fabrication.</li>
+                        </ul>
+                        <details class="project-details">
+                            <summary>Details</summary>
+                            <div class="details-content">
+                                <p>The project began as trial-and-error paper modeling and became a full computational geometry pipeline.</p>
+                                <p>Replacing time with angle as the natural parameter made the kinematic framing tractable and helped expose structure in the manifold behavior.</p>
+                            </div>
+                        </details>
                         <div class="highlight-grid">
                             <div class="sub-card">
                                 <h4>From Paper to Parameters</h4>
-                                <p>Initially, I was just trying to make something that looked right.  I had a vague idea of the mathematical properties I wanted, but I didn't have the tools to really understand what I was making.  Once I had those tools, I was able to go back and really nail down the properties of the object and produce something that was both mathematically sound and visually appealing.  I reimagined the entire problem from the perspective of kinematics, but instead of using time as a parameter, I replaced it with angle as a more natural parameter.  This let me reduce the problem to one of position, velocity and acceleration of a sort.  As I teased the problem apart from this new perspective, it felt pretty foreign, but the longer I sat with it, the more I was able to build an intuition around the object and its characteristics.</p>
+                                <p>I moved from visual intuition to a parameterized mathematical model, then used that model to produce consistent physical construction outputs.</p>
                                 <div class="links">
                                     <a href="assets/Torus/Differential_Torus_Knots.pdf" target="_blank">A Look at the Mathematics (PDF)</a>
                                 </div>
                             </div>
                             <div class="sub-card">
                                 <h4>From Parameters to Python</h4>
-                                <p>Since the mathematical foundation had been laid, I was able to implement the solution in Python, allowing for more efficient computations.  The solution involved integrals with no tidy closed-form, so I had to resort to numerical methods.  Additionally, I wanted to have well defined and accurate stitching guides so I didn't have to just eyeball them on a physical model.  To solve this sticky problem, I employed SciPy's numerical quadrature for the integration and SciPy's BrentQ optimizer to locate where the two sides of the band would meet.  Additionally, going from 3D to 2D, there is often a bit of self intersection.  This required careful handling to ensure the final model was both mathematically accurate and physically realizable.  I employed the LineString class from Shapely to quickly locate the intersections, so I could safely split the planar representation into proper embeddings.</p>
+                                <p>The implementation combines numerical quadrature, root-finding, and intersection handling to generate reliable planar nets and construction guides.</p>
                                 <div class="links">
                                     <a href="assets/Torus/planar_net.pdf" target="_blank">The Python Version (PDF)</a>
                                 </div>
@@ -372,8 +415,19 @@
 
                     <div class="project-card" data-bg-a="#d4e4f6" data-bg-b="#eaf2fb" data-bg-base="#f7fbff">
                         <h3>4. Breadth Beyond Code: Ethics, Mathematics, and Systems Thinking</h3>
-                        <p><strong>And Now For Something Completely Different:</strong> I wanted to include a couple of pieces that aren't strictly software development projects, but still represent important facets of my intellectual development and how I approach problems.  While their respective topics are entirely different, they both represent a similar approach to problem solving and analysis that I think is important to highlight.</p>
-                        <p><strong>The Throughline:</strong> Between the two pieces, the workflow is consistent. In one case, I investigated cobalt mining in the DRC through colonial history, political economy, and climate ethics. In the other, I analyzed the modulus of a quadratic over complex numbers through derivation, geometry, and computational exploration.  In each, I sought to better understand the material by forcing myself to avoid typical approaches.  In the ethics essay, I pay homage to Douglas Hofstadter's work in Gödel, Escher, Bach, while in the complex quadratics paper, I avoid the easy path of polar coordinates.</p>
+                        <p><strong>Problem:</strong> Demonstrate analytical depth beyond implementation work.</p>
+                        <p><strong>Solution:</strong> I included two writing-heavy projects that apply structured reasoning in different domains.</p>
+                        <ul class="impact-list">
+                            <li>Ethics research on cobalt extraction links technical progress with global justice concerns.</li>
+                            <li>Mathematics project derives geometric structure for a complex quadratic without defaulting to standard shortcuts.</li>
+                            <li>Both projects show clear argumentation, rigor, and systems-level framing.</li>
+                        </ul>
+                        <details class="project-details">
+                            <summary>Details</summary>
+                            <div class="details-content">
+                                <p>These artifacts show the same core workflow used in engineering: frame the problem, choose constraints, build a method, and communicate results clearly.</p>
+                            </div>
+                        </details>
                         <div class="highlight-grid">
                             <div class="sub-card">
                                 <h4>The Cobalt Blues</h4>
@@ -390,7 +444,7 @@
                                 </div>
                             </div>
                         </div>
-                        <p><strong>Why Include This Here:</strong> Together, these pieces show a complementary strength to my software portfolio: I can move between technical implementation and broader analytical framing, while keeping rigor in both domains.</p>
+                        <p><strong>Why Include This Here:</strong> They complement the technical portfolio by showing the same rigor in analysis, writing, and argument design.</p>
                         <div>
                             <span class="tech-tag">Systems Thinking</span>
                             <span class="tech-tag">Ethics & Political Economy</span>
