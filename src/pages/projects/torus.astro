@@ -1,0 +1,156 @@
+---
+import torusTitle from '../../../assets/Torus/Title_Card.png';
+import referencePair from '../../../assets/Torus/Reference_pair.png';
+import connectedPath from '../../../assets/Torus/Connected_Path.png';
+import physicalExample from '../../../assets/Torus/Physical_Example.png';
+import composite from '../../../assets/Torus/Composite.png';
+import completeKnot from '../../../assets/Torus/2-3_Knot_Narrow_Complete.JPG';
+import differentialTorusKnots from '../../../assets/Torus/Differential_Torus_Knots.pdf';
+import planarNet from '../../../assets/Torus/planar_net.pdf';
+import '../../styles/site.css';
+
+const technologies = ['Python', 'SciPy', 'Shapely', 'Blender', 'Numerical geometry', 'Paper fabrication'];
+const documents = [
+  { title: 'A Look at the Mathematics', kind: 'Differential geometry', summary: 'The mathematical foundation for describing a torus knot as a surface that can be developed into a planar construction. The document turns a visually compelling object into a parameterized problem.', href: differentialTorusKnots.src },
+  { title: 'The Python Version', kind: 'Computational pipeline', summary: 'The implementation story: numerical integration, root finding, intersection handling, and the generation of planar nets and stitch guides from the mathematical model.', href: planarNet.src }
+];
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Torus Knots and Curvy Plots, a computational geometry project by Jon Kirkpatrick." />
+    <title>Torus Knots and Curvy Plots | Jon Kirkpatrick</title>
+  </head>
+  <body class="case-study-page">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Jon Kirkpatrick home">JK<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="/#work">Selected work</a>
+        <a href="/#about">About</a>
+        <a class="nav-button" href="mailto:jon.kirkpatrick@pm.me">Get in touch</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="case-hero" aria-labelledby="case-title">
+        <div class="case-hero-copy">
+          <a class="back-link" href="/">← Back to selected work</a>
+          <p class="eyebrow">03 / Computational geometry</p>
+          <h1 id="case-title">Torus Knots<br /><em>and Curvy Plots</em></h1>
+          <p class="case-lede">A numerical and physical investigation into turning torus-knot geometry into printable, verifiable manifolds.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="https://github.com/JonKirkpatrick/Umbilic-Torus-Highlights" target="_blank" rel="noopener noreferrer">View repository <span aria-hidden="true">↗</span></a>
+            <a class="text-link" href="#documents">Read the abstracts <span aria-hidden="true">↓</span></a>
+          </div>
+        </div>
+        <div class="case-hero-mark">
+          <img src={torusTitle.src} alt="Torus knot project title image" />
+          <span>Model the curve.<br />Flatten the surface.<br />Build the proof.</span>
+        </div>
+      </section>
+
+      <section class="case-facts" aria-label="Project facts">
+        <div><span>Role</span><strong>Mathematics + implementation</strong></div>
+        <div><span>Focus</span><strong>Developable manifolds</strong></div>
+        <div><span>Method</span><strong>Numerical construction</strong></div>
+        <div><span>Proof</span><strong>Physical prototypes</strong></div>
+      </section>
+
+      <section class="case-section" aria-labelledby="question-title">
+        <div class="case-section-label"><span>01</span><span>The question</span></div>
+        <div class="case-section-body">
+          <h2 id="question-title">Can a complicated surface become a piece of paper?</h2>
+          <div class="case-two-column-copy">
+            <p>The project began with a physical intuition: create a torus-knot-shaped object from flat material, then find a way to make the construction precise rather than relying on trial and error.</p>
+            <p>The answer required moving between geometric description, numerical computation, and fabrication. Each view of the problem supplied a check on the others.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture-band torus-band" aria-labelledby="method-title">
+        <div class="architecture-copy">
+          <p class="eyebrow">The method</p>
+          <h2 id="method-title">Follow the object through three different spaces.</h2>
+          <p>The centre line defines the knot, the differential geometry defines the surface, and the planar net makes the result buildable. The project is about preserving the important structure as the representation changes.</p>
+        </div>
+        <div class="architecture-diagram" aria-label="Torus knot construction flow">
+          <div class="diagram-node"><span>01</span><strong>Curve</strong><small>Parameterize the knot</small></div>
+          <div class="diagram-connector">Surface</div>
+          <div class="diagram-node"><span>02</span><strong>Manifold</strong><small>Track the geometry</small></div>
+          <div class="diagram-connector">Net</div>
+          <div class="diagram-node"><span>03</span><strong>Artifact</strong><small>Print + assemble</small></div>
+        </div>
+      </section>
+
+      <section class="case-section" aria-labelledby="evidence-title">
+        <div class="case-section-label"><span>02</span><span>Evidence</span></div>
+        <div class="case-section-body">
+          <h2 id="evidence-title">The computation leaves the screen.</h2>
+          <div class="case-gallery torus-gallery">
+            <figure class="gallery-feature">
+              <div class="gallery-image"><img src={composite.src} alt="Composite of the physical torus-knot construction and its rendered model" loading="eager" /></div>
+              <figcaption><strong>Geometry with a physical alibi</strong><span>A calibrated render and a photographed construction meet in the same frame, making the accuracy of the pipeline tangible.</span></figcaption>
+            </figure>
+            <figure>
+              <div class="gallery-image"><img src={referencePair.src} alt="Reference points on the torus knot" loading="lazy" /></div>
+              <figcaption><strong>Reference points</strong><span>Matching points on the edge of the surface provide the information needed to align mating edges after printing.</span></figcaption>
+            </figure>
+            <figure>
+              <div class="gallery-image"><img src={connectedPath.src} alt="Connected path through the torus knot" loading="lazy" /></div>
+              <figcaption><strong>Sectioning the path</strong><span>The spine reveals why the construction needs to be divided into manageable segments.</span></figcaption>
+            </figure>
+            <figure>
+              <div class="gallery-image"><img src={physicalExample.src} alt="Physical paper torus knot example" loading="lazy" /></div>
+              <figcaption><strong>First physical result</strong><span>The paper model is built from the direct output of the planar-net script.</span></figcaption>
+            </figure>
+            <figure>
+              <div class="gallery-image"><img src={completeKnot.src} alt="Completed 2-3 torus knot" loading="lazy" /></div>
+              <figcaption><strong>A second knot</strong><span>The 2-3 example shows that the construction method is not limited to a single configuration.</span></figcaption>
+            </figure>
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section" id="documents" aria-labelledby="documents-title">
+        <div class="case-section-label"><span>03</span><span>Project journal</span></div>
+        <div class="case-section-body">
+          <h2 id="documents-title">Two documents. One loop between proof and practice.</h2>
+          <p class="section-intro">These abstracts give the short version. The original PDFs contain the derivations, implementation details, and the full account of how the construction was made reliable.</p>
+          <div class="document-grid">
+            {documents.map((document, index) => (
+              <article class="document-abstract">
+                <span class="document-number">0{index + 1}</span>
+                <p class="project-category">{document.kind}</p>
+                <h3>{document.title}</h3>
+                <p>{document.summary}</p>
+                <a class="card-link" href={document.href} target="_blank" rel="noopener noreferrer">Read original PDF <span aria-hidden="true">↗</span></a>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="case-section case-outcome" aria-labelledby="outcome-title">
+        <div class="case-section-label"><span>04</span><span>Outcome</span></div>
+        <div class="case-section-body">
+          <h2 id="outcome-title">A project where the proof is something you can hold.</h2>
+          <div class="case-two-column-copy">
+            <p>The final result is more than a rendered shape. It is a pipeline that moves from an abstract parameterization to construction instructions and then back to a physical object that can be inspected.</p>
+            <p>That loop between mathematical structure and material behavior is what made the project worth pursuing long after the first interesting picture had been produced.</p>
+          </div>
+          <div class="tag-list case-tags" aria-label="Torus knot project technologies">
+            {technologies.map((technology) => <span>{technology}</span>)}
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Jon Kirkpatrick</span>
+      <span>Torus Knots and Curvy Plots</span>
+      <a href="https://github.com/JonKirkpatrick/Umbilic-Torus-Highlights" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </footer>
+  </body>
+</html>
