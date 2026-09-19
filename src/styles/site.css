@@ -131,6 +131,7 @@ h1 { max-width: 800px; margin: 0; font-size: clamp(3.6rem, 8vw, 7.5rem); letter-
 .about-section h2 { margin: 0; font-size: clamp(2.4rem, 4vw, 4.2rem); letter-spacing: -0.04em; }
 .about-copy { max-width: 500px; color: var(--muted); }
 .about-copy p:first-child { margin-top: 0; }
+.about-invitation { margin: 34px 0 0; color: var(--ink); font-family: var(--display); font-size: 1.35rem; line-height: 1.25; }
 .about-copy .text-link { display: inline-block; margin-top: 18px; color: var(--ink); }
 
 .site-footer { justify-content: space-between; gap: 20px; padding: 26px 0; border-top: 1px solid var(--line); color: var(--muted); font-size: 0.8rem; }
