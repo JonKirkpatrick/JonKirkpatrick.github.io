@@ -14,11 +14,11 @@ import '../../styles/site.css';
 
 const technologies = ['SystemVerilog', 'Python', 'PyTorch', 'NumPy / SciPy', 'FPGA', 'Quantization'];
 const documents = [
-  { title: 'The Trouble With Pickles', kind: 'Data preparation', summary: 'A look at the dataset and the practical work required to turn noisy tactile IMU readings into something a model can learn from. The document establishes the data assumptions that shape everything downstream.', href: dataPrep.src },
-  { title: 'Architecture Search by GA', kind: 'Model exploration', summary: 'The model is treated as a constrained search space rather than a fixed guess. Candidate architectures are evaluated against both classification performance and the realities of the target hardware.', href: modelExploration.src },
-  { title: 'Split-Model Quantization', kind: 'Model refinement', summary: 'Quantization and compression are introduced progressively, allowing the model to adjust after capacity is removed. The result is a more disciplined path toward a deployable int8 network.', href: modelRefinement.src },
-  { title: 'The Ouroboros Core', kind: 'Model deployment', summary: 'The software model is translated into artifacts that a custom microkernel and instruction set can execute. This is where the training workflow meets the FPGA design.', href: modelDeployment.src },
-  { title: 'By Hand', kind: 'Technical foundation', summary: 'A from-scratch treatment of the convolutional network mechanics, useful as a record of the underlying operations rather than a dependency on a high-level framework.', href: cnnByHand.src }
+  { title: 'The Trouble With Pickles', kind: 'Data preparation', summary: 'A look at the dataset and the practical work required to turn noisy tactile IMU readings into something a model can learn from. The document establishes the data assumptions that shape everything downstream.', href: dataPrep },
+  { title: 'Architecture Search by GA', kind: 'Model exploration', summary: 'The model is treated as a constrained search space rather than a fixed guess. Candidate architectures are evaluated against both classification performance and the realities of the target hardware.', href: modelExploration },
+  { title: 'Split-Model Quantization', kind: 'Model refinement', summary: 'Quantization and compression are introduced progressively, allowing the model to adjust after capacity is removed. The result is a more disciplined path toward a deployable int8 network.', href: modelRefinement },
+  { title: 'The Ouroboros Core', kind: 'Model deployment', summary: 'The software model is translated into artifacts that a custom microkernel and instruction set can execute. This is where the training workflow meets the FPGA design.', href: modelDeployment },
+  { title: 'By Hand', kind: 'Technical foundation', summary: 'A from-scratch treatment of the convolutional network mechanics, useful as a record of the underlying operations rather than a dependency on a high-level framework.', href: cnnByHand }
 ];
 ---
 
