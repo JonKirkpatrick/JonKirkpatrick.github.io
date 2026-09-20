@@ -5,6 +5,7 @@ import connectedPath from '../../../assets/Torus/Connected_Path.png';
 import physicalExample from '../../../assets/Torus/Physical_Example.png';
 import composite from '../../../assets/Torus/Composite.png';
 import completeKnot from '../../../assets/Torus/2-3_Knot_Narrow_Complete.JPG';
+import { Image } from 'astro:assets';
 import '../../styles/site.css';
 
 const technologies = ['Python', 'SciPy', 'Shapely', 'Blender', 'Numerical geometry', 'Paper fabrication'];
@@ -44,7 +45,7 @@ const documents = [
           </div>
         </div>
         <div class="case-hero-mark">
-          <img src={torusTitle.src} alt="Torus knot project title image" />
+          <Image src={torusTitle} alt="Torus knot project title image" widths={[320, 640, 960]} sizes="(max-width: 900px) 80vw, 360px" />
           <span>Model the curve.<br />Flatten the surface.<br />Build the proof.</span>
         </div>
       </section>
@@ -88,23 +89,23 @@ const documents = [
           <h2 id="evidence-title">The computation leaves the screen.</h2>
           <div class="case-gallery torus-gallery">
             <figure class="gallery-feature">
-              <div class="gallery-image"><img src={composite.src} alt="Composite of the physical torus-knot construction and its rendered model" loading="eager" /></div>
+              <div class="gallery-image"><Image src={composite} alt="Composite of the physical torus-knot construction and its rendered model" widths={[480, 800, 1200]} sizes="(max-width: 900px) 100vw, 800px" loading="eager" /></div>
               <figcaption><strong>Geometry with a physical alibi</strong><span>A calibrated render and a photographed construction meet in the same frame, making the accuracy of the pipeline tangible.</span></figcaption>
             </figure>
             <figure>
-              <div class="gallery-image"><img src={referencePair.src} alt="Reference points on the torus knot" loading="lazy" /></div>
+              <div class="gallery-image"><Image src={referencePair} alt="Reference points on the torus knot" widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 400px" loading="lazy" /></div>
               <figcaption><strong>Reference points</strong><span>Matching points on the edge of the surface provide the information needed to align mating edges after printing.</span></figcaption>
             </figure>
             <figure>
-              <div class="gallery-image"><img src={connectedPath.src} alt="Connected path through the torus knot" loading="lazy" /></div>
+              <div class="gallery-image"><Image src={connectedPath} alt="Connected path through the torus knot" widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 400px" loading="lazy" /></div>
               <figcaption><strong>Sectioning the path</strong><span>The spine reveals why the construction needs to be divided into manageable segments.</span></figcaption>
             </figure>
             <figure>
-              <div class="gallery-image"><img src={physicalExample.src} alt="Physical paper torus knot example" loading="lazy" /></div>
+              <div class="gallery-image"><Image src={physicalExample} alt="Physical paper torus knot example" widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 400px" loading="lazy" /></div>
               <figcaption><strong>First physical result</strong><span>The paper model is built from the direct output of the planar-net script.</span></figcaption>
             </figure>
             <figure>
-              <div class="gallery-image"><img src={completeKnot.src} alt="Completed 2-3 torus knot" loading="lazy" /></div>
+              <div class="gallery-image"><Image src={completeKnot} alt="Completed 2-3 torus knot" widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 400px" loading="lazy" /></div>
               <figcaption><strong>A second knot</strong><span>The 2-3 example shows that the construction method is not limited to a single configuration.</span></figcaption>
             </figure>
           </div>

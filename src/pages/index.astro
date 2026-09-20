@@ -2,6 +2,7 @@
 import bbsLogo from '../../assets/BBS/BBS_Logo_Concept_Small.png';
 import tactileLogo from '../../assets/CNN/Tactile_Small.png';
 import torusImage from '../../assets/Torus/Title_Card.png';
+import { Image } from 'astro:assets';
 import '../styles/site.css';
 
 const projects = [
@@ -80,7 +81,7 @@ const projects = [
           {projects.map((project) => (
             <article class="project-card">
               <div class="project-image-wrap">
-                <img src={project.image.src} alt={`${project.title} project mark`} />
+                <Image src={project.image} alt={`${project.title} project mark`} widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 33vw" />
                 <span class="project-number">{project.number}</span>
               </div>
               <div class="project-content">

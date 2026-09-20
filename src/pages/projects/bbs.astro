@@ -5,6 +5,7 @@ import clientCollapsed from '../../../assets/BBS/BBS_Client_View3.png';
 import serverView from '../../../assets/BBS/BBS_Server_View2.png';
 import pluginView from '../../../assets/BBS/BBS_Server_View3.png';
 import launchVideo from '../../../assets/BBS/Start_to_Gridworld.mp4';
+import { Image } from 'astro:assets';
 import '../../styles/site.css';
 
 const technologies = ['Go', 'C# / Avalonia', 'JavaScript', 'SQLite', 'TCP/IP sockets', 'Distributed systems'];
@@ -46,7 +47,7 @@ const gallery = [
           </div>
         </div>
         <div class="case-hero-mark">
-          <img src={bbsLogo.src} alt="Build-a-Bot Stadium logo" />
+          <Image src={bbsLogo} alt="Build-a-Bot Stadium logo" widths={[320, 640, 960]} sizes="(max-width: 900px) 80vw, 360px" />
           <span>Build environments.<br />Deploy agents.<br />Study behavior.</span>
         </div>
       </section>
@@ -91,7 +92,7 @@ const gallery = [
           <div class="case-gallery">
             {gallery.map((item, index) => (
               <figure class:list={{ 'gallery-feature': index === 0 }}>
-                <div class="gallery-image"><img src={item.image.src} alt={item.label} loading={index === 0 ? 'eager' : 'lazy'} /></div>
+                <div class="gallery-image"><Image src={item.image} alt={item.label} widths={[480, 800, 1200]} sizes="(max-width: 900px) 100vw, 800px" loading={index === 0 ? 'eager' : 'lazy'} /></div>
                 <figcaption><strong>{item.label}</strong><span>{item.text}</span></figcaption>
               </figure>
             ))}

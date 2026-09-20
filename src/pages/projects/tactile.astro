@@ -5,6 +5,7 @@ import fsmSummary from '../../../assets/CNN/FSM_Summary.png';
 import mathUnit from '../../../assets/CNN/Math_Unit.png';
 import baselineSummary from '../../../assets/CNN/Training/Baseline_Summary.png';
 import baselineConfusion from '../../../assets/CNN/Training/Baseline_Final_Confusion.png';
+import { Image } from 'astro:assets';
 import '../../styles/site.css';
 
 const technologies = ['SystemVerilog', 'Python', 'PyTorch', 'NumPy / SciPy', 'FPGA', 'Quantization'];
@@ -47,7 +48,7 @@ const documents = [
           </div>
         </div>
         <div class="case-hero-mark">
-          <img src={tactileLogo.src} alt="Tactile Pattern Classification project mark" />
+          <Image src={tactileLogo} alt="Tactile Pattern Classification project mark" widths={[320, 640, 960]} sizes="(max-width: 900px) 80vw, 360px" />
           <span>Sense the surface.<br />Compress the model.<br />Respect the silicon.</span>
         </div>
       </section>
@@ -91,15 +92,15 @@ const documents = [
           <h2 id="hardware-title">The model and the machine share a vocabulary.</h2>
           <div class="case-gallery tactile-gallery">
             <figure class="gallery-feature">
-              <div class="gallery-image"><img src={highLevel.src} alt="High-level diagram of the tactile classification hardware" loading="eager" /></div>
+              <div class="gallery-image"><Image src={highLevel} alt="High-level diagram of the tactile classification hardware" widths={[480, 800, 1200]} sizes="(max-width: 900px) 100vw, 800px" loading="eager" /></div>
               <figcaption><strong>One system, several layers of responsibility</strong><span>The custom microkernel, instruction set, control logic, and on-chip memory work together to execute the model without losing the structure established during training.</span></figcaption>
             </figure>
             <figure>
-              <div class="gallery-image"><img src={fsmSummary.src} alt="Finite state machine summary" loading="lazy" /></div>
+              <div class="gallery-image"><Image src={fsmSummary} alt="Finite state machine summary" widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 400px" loading="lazy" /></div>
               <figcaption><strong>Control flow made explicit</strong><span>The finite state machine orchestrates the movement of feature maps through the convolutional operation.</span></figcaption>
             </figure>
             <figure>
-              <div class="gallery-image"><img src={mathUnit.src} alt="Math unit design diagram" loading="lazy" /></div>
+              <div class="gallery-image"><Image src={mathUnit} alt="Math unit design diagram" widths={[320, 640, 960]} sizes="(max-width: 900px) 100vw, 400px" loading="lazy" /></div>
               <figcaption><strong>Parallel arithmetic</strong><span>The inference-only workload makes room for a highly parallelized math unit within the device budget.</span></figcaption>
             </figure>
           </div>
@@ -113,7 +114,7 @@ const documents = [
           <p>The larger baseline reaches roughly 92% validation accuracy while revealing where the classes are difficult to separate. The deployment path keeps the model compact and hardware-realistic, accepting a controlled loss in capacity rather than ignoring the target device.</p>
           <a class="text-link" href={baselineConfusion.src} target="_blank" rel="noopener noreferrer">Open confusion matrix <span aria-hidden="true">↗</span></a>
         </div>
-        <div class="evidence-image"><img src={baselineSummary.src} alt="Summary of baseline training and quantization stages" loading="lazy" /></div>
+        <div class="evidence-image"><Image src={baselineSummary} alt="Summary of baseline training and quantization stages" widths={[480, 800, 1200]} sizes="(max-width: 900px) 100vw, 800px" loading="lazy" /></div>
       </section>
 
       <section class="case-section documents-section" id="documents" aria-labelledby="documents-title">
