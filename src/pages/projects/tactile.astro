@@ -5,20 +5,15 @@ import fsmSummary from '../../../assets/CNN/FSM_Summary.png';
 import mathUnit from '../../../assets/CNN/Math_Unit.png';
 import baselineSummary from '../../../assets/CNN/Training/Baseline_Summary.png';
 import baselineConfusion from '../../../assets/CNN/Training/Baseline_Final_Confusion.png';
-import dataPrep from '../../../docs/CNN/DataPrep.pdf';
-import modelExploration from '../../../docs/CNN/ModelExploration.pdf';
-import modelRefinement from '../../../docs/CNN/ModelRefinement.pdf';
-import modelDeployment from '../../../docs/CNN/ModelDeployment.pdf';
-import cnnByHand from '../../../docs/CNN/CNN_By_Hand.pdf';
 import '../../styles/site.css';
 
 const technologies = ['SystemVerilog', 'Python', 'PyTorch', 'NumPy / SciPy', 'FPGA', 'Quantization'];
 const documents = [
-  { title: 'The Trouble With Pickles', kind: 'Data preparation', summary: 'A look at the dataset and the practical work required to turn noisy tactile IMU readings into something a model can learn from. The document establishes the data assumptions that shape everything downstream.', href: dataPrep },
-  { title: 'Architecture Search by GA', kind: 'Model exploration', summary: 'The model is treated as a constrained search space rather than a fixed guess. Candidate architectures are evaluated against both classification performance and the realities of the target hardware.', href: modelExploration },
-  { title: 'Split-Model Quantization', kind: 'Model refinement', summary: 'Quantization and compression are introduced progressively, allowing the model to adjust after capacity is removed. The result is a more disciplined path toward a deployable int8 network.', href: modelRefinement },
-  { title: 'The Ouroboros Core', kind: 'Model deployment', summary: 'The software model is translated into artifacts that a custom microkernel and instruction set can execute. This is where the training workflow meets the FPGA design.', href: modelDeployment },
-  { title: 'By Hand', kind: 'Technical foundation', summary: 'A from-scratch treatment of the convolutional network mechanics, useful as a record of the underlying operations rather than a dependency on a high-level framework.', href: cnnByHand }
+  { title: 'The Trouble With Pickles', kind: 'Data preparation', summary: 'A look at the dataset and the practical work required to turn noisy tactile IMU readings into something a model can learn from. The document establishes the data assumptions that shape everything downstream.', href: '/CNN/DataPrep.pdf' },
+  { title: 'Architecture Search by GA', kind: 'Model exploration', summary: 'The model is treated as a constrained search space rather than a fixed guess. Candidate architectures are evaluated against both classification performance and the realities of the target hardware.', href: '/CNN/ModelExploration.pdf' },
+  { title: 'Split-Model Quantization', kind: 'Model refinement', summary: 'Quantization and compression are introduced progressively, allowing the model to adjust after capacity is removed. The result is a more disciplined path toward a deployable int8 network.', href: '/CNN/ModelRefinement.pdf' },
+  { title: 'The Ouroboros Core', kind: 'Model deployment', summary: 'The software model is translated into artifacts that a custom microkernel and instruction set can execute. This is where the training workflow meets the FPGA design.', href: '/CNN/ModelDeployment.pdf' },
+  { title: 'By Hand', kind: 'Technical foundation', summary: 'A from-scratch treatment of the convolutional network mechanics, useful as a record of the underlying operations rather than a dependency on a high-level framework.', href: '/CNN/CNN_By_Hand.pdf' }
 ];
 ---
 
