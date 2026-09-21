@@ -9,6 +9,12 @@ import { Image } from 'astro:assets';
 import '../../styles/site.css';
 
 const technologies = ['Go', 'C# / Avalonia', 'JavaScript', 'SQLite', 'TCP/IP sockets', 'Distributed systems'];
+const documentationPaths = [
+  { number: '01', category: 'Start here', title: 'Onboarding', text: 'Getting Started and the Quickstart Checklist turn a multi-part system into a clear first run.', href: 'https://jonkirkpatrick.github.io/bbs/docs/category/onboarding' },
+  { number: '02', category: 'Build with it', title: 'Guides', text: 'Task-focused walkthroughs show how to connect to a remote server and author a new plugin.', href: 'https://jonkirkpatrick.github.io/bbs/docs/category/guides' },
+  { number: '03', category: 'Understand the boundaries', title: 'Architecture', text: "Architecture notes and decision records make the platform's responsibilities, tradeoffs, and boundaries legible.", href: 'https://jonkirkpatrick.github.io/bbs/docs/category/architecture' },
+  { number: '04', category: 'Integrate and operate', title: 'Reference, deployment, and releases', text: 'Protocols, packaging notes, versioning, and the roadmap describe how the system can be used beyond a local demo.', href: 'https://jonkirkpatrick.github.io/bbs/docs' }
+];
 const gallery = [
   { image: clientView, label: 'Client orchestration', text: 'The client manages servers, bot sessions, arenas, and the flow of data between them.' },
   { image: serverView, label: 'Server state', text: 'A live arena exposes the state needed to understand what an environment and its agents are doing.' },
@@ -85,8 +91,28 @@ const gallery = [
         </div>
       </section>
 
+      <section class="case-section documentation-section" aria-labelledby="documentation-title">
+        <div class="case-section-label"><span>02</span><span>The system includes its own map</span></div>
+        <div class="case-section-body">
+          <h2 id="documentation-title">A platform is only useful when other people can find their way through it.</h2>
+          <p class="section-intro">BBS is documented as a system that people can understand, operate, extend, and eventually contribute to. The documentation follows the same path as the software: from first launch, through experimentation, down to the contracts and decisions that keep the platform coherent.</p>
+          <div class="document-grid">
+            {documentationPaths.map((path) => (
+              <article class="document-abstract">
+                <span class="document-number">{path.number}</span>
+                <p class="project-category">{path.category}</p>
+                <h3>{path.title}</h3>
+                <p>{path.text}</p>
+                <a class="card-link" href={path.href} target="_blank" rel="noopener noreferrer">Browse {path.title.toLowerCase()} <span aria-hidden="true">↗</span></a>
+              </article>
+            ))}
+          </div>
+          <a class="text-link documentation-link" href="https://jonkirkpatrick.github.io/bbs" target="_blank" rel="noopener noreferrer">Explore the BBS documentation <span aria-hidden="true">↗</span></a>
+        </div>
+      </section>
+
       <section class="case-section" aria-labelledby="walkthrough-title">
-        <div class="case-section-label"><span>02</span><span>In the system</span></div>
+        <div class="case-section-label"><span>03</span><span>In the system</span></div>
         <div class="case-section-body">
           <h2 id="walkthrough-title">A platform that stays out of the way.</h2>
           <div class="case-gallery">
@@ -116,7 +142,7 @@ const gallery = [
       </section>
 
       <section class="case-section case-outcome" aria-labelledby="outcome-title">
-        <div class="case-section-label"><span>03</span><span>What I learned</span></div>
+        <div class="case-section-label"><span>04</span><span>What I learned</span></div>
         <div class="case-section-body">
           <h2 id="outcome-title">The useful abstraction is the one that leaves room.</h2>
           <div class="case-two-column-copy">
