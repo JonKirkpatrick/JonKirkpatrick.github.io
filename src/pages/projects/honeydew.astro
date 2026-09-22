@@ -1,0 +1,130 @@
+---
+import awardCertificate from '../../../assets/About/BestGame_HoneyDew.png';
+import awardPdf from '../../../assets/About/BestGame_HoneyDew.pdf';
+import trailer from '../../../assets/About/Project_trailer.mp4';
+import { Image } from 'astro:assets';
+import '../../styles/site.css';
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content="Honeydew Hollow, a collaborative game project by Jon Kirkpatrick and teammates." />
+    <title>Honeydew Hollow | Jon Kirkpatrick</title>
+  </head>
+  <body class="case-study-page">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Jon Kirkpatrick home">JK<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="/#work">Selected work</a>
+        <a href="/#about">About</a>
+        <a class="nav-button" href="mailto:jon.kirkpatrick@pm.me">Get in touch</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="case-hero" aria-labelledby="case-title">
+        <div class="case-hero-copy">
+          <a class="back-link" href="/">← Back to selected work</a>
+          <p class="eyebrow">04 / Collaborative game project</p>
+          <h1 id="case-title">Honeydew<br /><em>Hollow</em></h1>
+          <p class="case-lede">A collaborative game and engine project: an ECS-based C++ engine built on SFML, then tested through a multi-level game with two distinct gameplay styles.</p>
+          <div class="hero-actions">
+            <a class="button button-primary" href="#trailer">Watch the trailer <span aria-hidden="true">↓</span></a>
+            <a class="text-link" href={awardPdf} target="_blank" rel="noopener noreferrer">Open award certificate <span aria-hidden="true">↗</span></a>
+          </div>
+        </div>
+        <div class="case-hero-mark">
+          <Image src={awardCertificate} alt="Best Game award certificate for Honeydew Hollow" widths={[320, 640, 960]} sizes="(max-width: 900px) 80vw, 360px" />
+          <span>Make something together.<br />Find the shared rhythm.<br />Ship the moment.</span>
+        </div>
+      </section>
+
+      <section class="case-facts" aria-label="Project facts">
+        <div><span>Role</span><strong>Engine + game contributor</strong></div>
+        <div><span>Architecture</span><strong>ECS on SFML</strong></div>
+        <div><span>Features</span><strong>Save/load + quest progression</strong></div>
+        <div><span>Recognition</span><strong>Best Game award</strong></div>
+      </section>
+
+      <section class="case-section" aria-labelledby="collaboration-title">
+        <div class="case-section-label"><span>01</span><span>The engine brief</span></div>
+        <div class="case-section-body">
+          <h2 id="collaboration-title">Build the engine, then prove it with a game.</h2>
+          <div class="case-two-column-copy">
+            <p>The project was principally an exercise in collaborative engine development. We built a C++ engine on top of SFML using an entity-component-system architecture, keeping game objects composed from reusable data and behavior rather than hard-coded into a single hierarchy.</p>
+            <p>The engine also included a Dear ImGui debugging console, custom serialization for saving and loading games, and progression-aware quest objectives. Those systems made the game a useful test of the engine rather than a thin demo built around one fixed level.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="architecture-band" aria-labelledby="architecture-title">
+        <div class="architecture-copy">
+          <p class="eyebrow">The technical shape</p>
+          <h2 id="architecture-title">One engine. Several kinds of play.</h2>
+          <p>We deliberately combined top-down and side-scrolling levels. Supporting both meant the engine had to accommodate different camera behavior, movement models, collision assumptions, and level logic while preserving the same underlying entity and component model.</p>
+        </div>
+        <div class="architecture-diagram" aria-label="Honeydew Hollow engine and game architecture">
+          <div class="diagram-node"><span>01</span><strong>ECS engine</strong><small>C++ / SFML foundation</small></div>
+          <div class="diagram-connector">Systems</div>
+          <div class="diagram-node"><span>02</span><strong>Game layers</strong><small>Top-down + side scroll</small></div>
+          <div class="diagram-connector">Progress</div>
+          <div class="diagram-node"><span>03</span><strong>Playable result</strong><small>Levels + boss fight</small></div>
+        </div>
+      </section>
+
+      <section class="demo-section" id="trailer" aria-labelledby="trailer-title">
+        <div class="demo-copy">
+          <p class="eyebrow">The game itself</p>
+          <h2 id="trailer-title">A small game with a serious systems brief.</h2>
+          <p>To exercise the engine, we built a game with at least three levels, including a boss fight, and wrote three GLSL fragment shaders for use in the final experience. The decision to include both top-down and side-scrolling levels increased the engine’s complexity, but also gave the team a meaningful range of problems to solve together.</p>
+          <a class="text-link" href={trailer} target="_blank" rel="noopener noreferrer">Open video file <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="demo-video-wrap">
+          <video controls preload="metadata">
+            <source src={trailer} type="video/mp4" />
+            Your browser does not support embedded video.
+          </video>
+        </div>
+      </section>
+
+      <section class="evidence-section" aria-labelledby="award-title">
+        <div class="evidence-copy">
+          <p class="eyebrow">External evidence</p>
+          <h2 id="award-title">The shared result earned Best Game.</h2>
+          <p>The certificate gives the collaboration a concrete outcome beyond the portfolio itself. It is available both as an image for quick viewing and as the original PDF for closer inspection.</p>
+          <a class="text-link" href={awardPdf} target="_blank" rel="noopener noreferrer">Read the original certificate <span aria-hidden="true">↗</span></a>
+        </div>
+        <div class="evidence-image"><Image src={awardCertificate} alt="Best Game award certificate for Honeydew Hollow" widths={[480, 800, 1200]} sizes="(max-width: 900px) 100vw, 800px" loading="lazy" /></div>
+      </section>
+
+      <section class="case-section case-outcome" aria-labelledby="outcome-title">
+        <div class="case-section-label"><span>02</span><span>What this adds</span></div>
+        <div class="case-section-body">
+          <h2 id="outcome-title">Collaboration is a technical skill when the system has to hold together.</h2>
+          <div class="case-two-column-copy">
+            <p>Honeydew Hollow adds a different kind of engineering evidence to the portfolio: coordinating around shared abstractions, integrating engine and game work, and making architectural decisions that support more than one kind of level.</p>
+            <p>The trailer and certificate are the clearest surviving presentation artifacts. They show a project that reached a recognizable finish line, while the engine details explain the technical work that made that result possible.</p>
+          </div>
+          <div class="tag-list case-tags" aria-label="Honeydew Hollow project qualities">
+            <span>C++</span>
+            <span>SFML</span>
+            <span>ECS architecture</span>
+            <span>Dear ImGui</span>
+            <span>GLSL shaders</span>
+            <span>Custom serialization</span>
+            <span>Team contribution</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <span>Jon Kirkpatrick</span>
+      <span>Honeydew Hollow</span>
+      <a href="https://www.linkedin.com/in/jonathan-kirkpatrick-62b428330" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href="https://github.com/JonKirkpatrick" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </footer>
+  </body>
+</html>
