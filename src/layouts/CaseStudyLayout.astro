@@ -1,0 +1,41 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  projectName: string;
+  githubUrl?: string;
+}
+
+const { title, description, projectName, githubUrl = 'https://github.com/JonKirkpatrick' } = Astro.props;
+---
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <title>{title} | Jon Kirkpatrick</title>
+    <script data-goatcounter="https://jonkirkpatrick.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+  </head>
+  <body class="case-study-page">
+    <header class="site-header">
+      <a class="wordmark" href="/" aria-label="Jon Kirkpatrick home">JK<span>.</span></a>
+      <nav aria-label="Primary navigation">
+        <a href="/#work">Selected work</a>
+        <a href="/#about">About</a>
+        <a class="nav-button" href="mailto:jon.kirkpatrick@pm.me">Get in touch</a>
+      </nav>
+    </header>
+
+    <main>
+      <slot />
+    </main>
+
+    <footer class="site-footer">
+      <span>Jon Kirkpatrick</span>
+      <span>{projectName}</span>
+      <a href="https://www.linkedin.com/in/jonathan-kirkpatrick-62b428330" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
+      <a href={githubUrl} target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+    </footer>
+  </body>
+</html>

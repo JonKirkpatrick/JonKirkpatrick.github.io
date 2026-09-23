@@ -6,6 +6,7 @@ import mathUnit from '../../../assets/CNN/Math_Unit.png';
 import baselineSummary from '../../../assets/CNN/Training/Baseline_Summary.png';
 import baselineConfusion from '../../../assets/CNN/Training/Baseline_Final_Confusion.png';
 import { Image } from 'astro:assets';
+import CaseStudyLayout from '../../layouts/CaseStudyLayout.astro';
 import '../../styles/site.css';
 
 const technologies = ['SystemVerilog', 'Python', 'PyTorch', 'NumPy / SciPy', 'DE10-Lite', 'Quantization'];
@@ -18,25 +19,12 @@ const documents = [
 ];
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="description" content="Tactile Pattern Classification, a software and hardware co-design project by Jon Kirkpatrick." />
-    <title>Tactile Pattern Classification | Jon Kirkpatrick</title>
-    <script data-goatcounter="https://jonkirkpatrick.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
-  </head>
-  <body class="case-study-page">
-    <header class="site-header">
-      <a class="wordmark" href="/" aria-label="Jon Kirkpatrick home">JK<span>.</span></a>
-      <nav aria-label="Primary navigation">
-        <a href="/#work">Selected work</a>
-        <a href="/#about">About</a>
-        <a class="nav-button" href="mailto:jon.kirkpatrick@pm.me">Get in touch</a>
-      </nav>
-    </header>
-
-    <main>
+<CaseStudyLayout
+  title="Tactile Pattern Classification"
+  description="Tactile Pattern Classification, a software and hardware co-design project by Jon Kirkpatrick."
+  projectName="Tactile Pattern Classification"
+  githubUrl="https://github.com/JonKirkpatrick/tactile-classification"
+>
       <section class="case-hero" aria-labelledby="case-title">
         <div class="case-hero-copy">
           <a class="back-link" href="/">← Back to selected work</a>
@@ -166,13 +154,4 @@ const documents = [
           </div>
         </div>
       </section>
-    </main>
-
-    <footer class="site-footer">
-      <span>Jon Kirkpatrick</span>
-      <span>Tactile Pattern Classification</span>
-      <a href="https://www.linkedin.com/in/jonathan-kirkpatrick-62b428330" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a>
-      <a href="https://github.com/JonKirkpatrick" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
-    </footer>
-  </body>
-</html>
+</CaseStudyLayout>

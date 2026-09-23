@@ -19,6 +19,7 @@ There is no frontend framework, backend, test suite, formatter, or linter config
 ```text
 src/pages/index.astro          Home page and project-card data
 src/pages/projects/            Individual project case studies
+src/layouts/                   Shared page shells, including case studies
 src/styles/site.css            Shared layout, responsive rules, and visual design
 assets/                        Source images and videos processed by Astro
 docs/                          Public, unprocessed files and PDFs
@@ -69,7 +70,9 @@ Edit the matching file in `src/pages/projects/`. Each page keeps its content in 
 - `target="_blank"` and `rel="noopener noreferrer"` for external links.
 - A working link back to the home page and the shared footer.
 
-Project pages are intentionally self-contained rather than generated from a content collection. This makes long-form case-study editing straightforward, but means a new project needs both a new page and a new entry in the `projects` array on `index.astro`.
+Project pages are intentionally hand-authored rather than generated from a content collection. This keeps long-form case-study editing straightforward while `src/layouts/CaseStudyLayout.astro` owns the repeated document shell: metadata, analytics, navigation, page wrapper, and footer. A new project needs a new page that uses this layout, a new entry in the `projects` array on `index.astro`, and its project-specific assets.
+
+The layout accepts `title`, `description`, and `projectName` props, plus an optional `githubUrl`. Put the page's unique sections between the opening and closing `CaseStudyLayout` tags. Keep imports and project data in the page frontmatter.
 
 ### Images and video
 
