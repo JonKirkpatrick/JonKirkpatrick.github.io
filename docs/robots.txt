@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://jonkirkpatrick.github.io/sitemap-index.xml
